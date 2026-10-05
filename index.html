@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A cinematic journey through the history, traditions and changing celebrations of Diwali.">
+    <meta name="theme-color" content="#0a0604">
+    <title>Diwali — A Journey Through Light</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="site-header" id="siteHeader">
+        <div class="nav-inner">
+            <a href="#home" class="brand">
+                <span class="brand-diya" aria-hidden="true">🪔</span>
+                <span>Diwali</span>
+            </a>
+            <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#surprise">Surprise</a>
+                <a href="#journey">Journey</a>
+                <a href="#traditions">Traditions</a>
+                <a href="#today">Today</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HOME — full-screen cinematic video background -->
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <video
+                    id="homeBackgroundVideo"
+                    class="hero-bg-video"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                    aria-hidden="true"
+                >
+                    <source src="Assets/videos/scenes/diwali-rama-story-40sec.mp4" type="video/mp4">
+                </video>
+                <div class="hero-bg-overlay"></div>
+            </div>
+
+            <div class="hero-particles" aria-hidden="true">
+                <span>✨</span><span>🪔</span><span>✨</span><span>🌸</span>
+                <span>🪔</span><span>🎆</span><span>✨</span><span>🌼</span>
+                <span>🪔</span><span>✨</span><span>🎇</span><span>🌸</span>
+            </div>
+
+            <!-- 3D rotating Diwali diya -->
+            <div class="hero-diya-3d" aria-hidden="true">
+                <div class="diya-scene">
+                    <div class="diya-pivot">
+                        <div class="diya-body">
+                            <div class="diya-rim"></div>
+                            <div class="diya-bowl"></div>
+                            <div class="diya-base"></div>
+                            <div class="diya-wick"></div>
+                            <div class="diya-flame">
+                                <span class="flame-outer"></span>
+                                <span class="flame-mid"></span>
+                                <span class="flame-core"></span>
+                            </div>
+                            <div class="diya-glow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-content cinematic-reveal">
+                <span class="hero-kicker">A Festival of Light</span>
+                <h1>Happy<br><span>Diwali</span></h1>
+                <p class="hero-subtitle">
+                    A journey through stories, traditions, memories and
+                    the light that continues to connect generations.
+                </p>
+                <a href="#surprise" class="hero-button">
+                    <span aria-hidden="true">✨</span>
+                    Discover the Story
+                    <span aria-hidden="true">🪔</span>
+                </a>
+            </div>
+
+            <div class="scroll-indicator" aria-hidden="true">
+                <span>Scroll to explore</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- SURPRISE -->
+        <section id="surprise" class="surprise-section">
+            <div class="surprise-background"></div>
+            <div class="surprise-content">
+                <div class="surprise-heading cinematic-reveal">
+                    <span class="section-kicker">A Diwali Surprise</span>
+                    <h2>Before the story begins...</h2>
+                    <p>Take a moment. Let the lights come alive.</p>
+                </div>
+
+                <button id="surpriseButton" class="surprise-button" type="button">
+                    <span class="surprise-button-icon" aria-hidden="true">🎁</span>
+                    <span>Open the Diwali Surprise</span>
+                    <span class="surprise-button-sparkle" aria-hidden="true">✨</span>
+                </button>
+
+                <div id="surpriseDecorations" class="surprise-decorations" aria-hidden="true">
+                    <span class="paper paper-red"></span>
+                    <span class="paper paper-yellow"></span>
+                    <span class="paper paper-blue"></span>
+                    <span class="paper paper-green"></span>
+                    <span class="paper paper-pink"></span>
+                    <span class="paper paper-orange"></span>
+                    <span class="paper paper-purple"></span>
+                    <span class="paper paper-gold"></span>
+                    <span class="paper paper-red"></span>
+                    <span class="paper paper-yellow"></span>
+                    <span class="paper paper-blue"></span>
+                    <span class="paper paper-green"></span>
+                    <span class="paper paper-pink"></span>
+                    <span class="paper paper-orange"></span>
+                    <span class="paper paper-purple"></span>
+                    <span class="paper paper-gold"></span>
+                </div>
+
+                <div id="cinematicVideoWrapper" class="cinematic-video-wrapper">
+                    <video
+                        id="openingCinematicVideo"
+                        class="opening-cinematic-video"
+                        playsinline
+                        preload="auto"
+                        controls
+                    >
+                        <source src="Assets/videos/scenes/diwali-rama-story-40sec.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                    <div class="cinematic-corner cinematic-corner-top-left" aria-hidden="true">✨</div>
+                    <div class="cinematic-corner cinematic-corner-top-right" aria-hidden="true">🪔</div>
+                    <div class="cinematic-corner cinematic-corner-bottom-left" aria-hidden="true">🌸</div>
+                    <div class="cinematic-corner cinematic-corner-bottom-right" aria-hidden="true">✨</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOURNEY — compact cinematic chapter -->
+        <section id="journey" class="chapter-section journey-section">
+            <article class="chapter-row cinematic-reveal" data-chapter="journey">
+                <button type="button" class="chapter-trigger" aria-expanded="false" aria-controls="journeyPanel">
+                    <div class="chapter-visual">
+                        <img
+                            src="https://images.pexels.com/photos/18849427/pexels-photo-18849427.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                            alt="Rows of glowing Diwali lamps"
+                            loading="lazy"
+                            class="chapter-visual-img">
+                        <div class="chapter-visual-glow" aria-hidden="true"></div>
+                    </div>
+                    <div class="chapter-summary">
+                        <span class="chapter-icon" aria-hidden="true">🪔</span>
+                        <span class="section-kicker">The Journey</span>
+                        <h2>A Story of Return &amp; Light</h2>
+                        <p>
+                            One widely observed tradition connects Diwali
+                            with Rama's return to Ayodhya after fourteen years of exile.
+                        </p>
+                        <span class="chapter-expand-hint">
+                            <span class="hint-label">Explore scenes</span>
+                            <span class="hint-arrow" aria-hidden="true">→</span>
+                        </span>
+                    </div>
+                </button>
+
+                <div id="journeyPanel" class="chapter-panel" hidden>
+                    <div class="chapter-panel-inner">
+                        <div class="scene-strip" role="list">
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&w=600&q=80" alt="Golden sunset landscape" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="scene-number">01</span>
+                                    <h3>Fourteen Years Away</h3>
+                                    <p>Rama, Sita and Lakshmana are traditionally described as spending fourteen years in exile, away from Ayodhya.</p>
+                                </div>
+                            </article>
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80" alt="Dense forest path" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="scene-number">02</span>
+                                    <h3>Forests and Trials</h3>
+                                    <p>Their journey is remembered through the Ramayana as a time filled with challenges, encounters and courage.</p>
+                                </div>
+                            </article>
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=600&q=80" alt="River landscape at twilight" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="scene-number">03</span>
+                                    <h3>The Journey Home</h3>
+                                    <p>After exile and the victory over Ravana, they are traditionally believed to have returned towards Ayodhya.</p>
+                                </div>
+                            </article>
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=600" alt="City glowing at night" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="scene-number">04</span>
+                                    <h3>Ayodhya Awaits</h3>
+                                    <p>People of Ayodhya welcomed Rama by lighting rows of oil lamps throughout the city.</p>
+                                </div>
+                            </article>
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.pexels.com/photos/18849427/pexels-photo-18849427.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Rows of glowing Diwali lamps" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="scene-number">05</span>
+                                    <h3>Light Over Darkness</h3>
+                                    <p>The lamp became one of the most recognisable symbols of Diwali — light, hope and renewal.</p>
+                                </div>
+                            </article>
+                        </div>
+                        <p class="chapter-panel-note">And the story became a tradition. But Diwali is more than one story.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- TRADITIONS — compact cinematic chapter -->
+        <section id="traditions" class="chapter-section traditions-section">
+            <article class="chapter-row cinematic-reveal" data-chapter="traditions">
+                <button type="button" class="chapter-trigger" aria-expanded="false" aria-controls="traditionsPanel">
+                    <div class="chapter-visual">
+                        <img
+                            src="https://images.pexels.com/photos/6103203/pexels-photo-6103203.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                            alt="Traditional diya lamp"
+                            loading="lazy"
+                            class="chapter-visual-img">
+                        <div class="chapter-visual-glow" aria-hidden="true"></div>
+                    </div>
+                    <div class="chapter-summary">
+                        <span class="chapter-icon" aria-hidden="true">🌸</span>
+                        <span class="section-kicker">Traditions</span>
+                        <h2>Many Traditions. One Celebration.</h2>
+                        <p>
+                            Across India and beyond, Diwali is celebrated with
+                            rituals, food and family customs that vary by region.
+                        </p>
+                        <span class="chapter-expand-hint">
+                            <span class="hint-label">Explore traditions</span>
+                            <span class="hint-arrow" aria-hidden="true">→</span>
+                        </span>
+                    </div>
+                </button>
+
+                <div id="traditionsPanel" class="chapter-panel" hidden>
+                    <div class="chapter-panel-inner">
+                        <div class="scene-strip" role="list">
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.pexels.com/photos/6103203/pexels-photo-6103203.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Traditional diya lamp" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="tradition-icon" aria-hidden="true">🪔</span>
+                                    <h3>Lighting Diyas</h3>
+                                    <p>Oil lamps fill homes, entrances and prayer spaces with warm light.</p>
+                                </div>
+                            </article>
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.pexels.com/photos/6213685/pexels-photo-6213685.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Colourful rangoli" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="tradition-icon" aria-hidden="true">🌸</span>
+                                    <h3>Rangoli</h3>
+                                    <p>Patterns of powders and flowers decorate entrances and courtyards.</p>
+                                </div>
+                            </article>
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.pexels.com/photos/34387791/pexels-photo-34387791.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Diyas with marigold flowers" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="tradition-icon" aria-hidden="true">🙏</span>
+                                    <h3>Prayer &amp; Lakshmi Puja</h3>
+                                    <p>Families seek blessings, prosperity and well-being for the year ahead.</p>
+                                </div>
+                            </article>
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600&q=80" alt="Family celebrating together" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="tradition-icon" aria-hidden="true">👨‍👩‍👧‍👦</span>
+                                    <h3>Family &amp; Food</h3>
+                                    <p>Gifts, sweets and shared meals become the memories we keep.</p>
+                                </div>
+                            </article>
+                        </div>
+                        <p class="chapter-panel-note">Light, togetherness and renewal remain common themes across regions.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- TODAY — compact cinematic chapter -->
+        <section id="today" class="chapter-section today-section">
+            <article class="chapter-row cinematic-reveal" data-chapter="today">
+                <button type="button" class="chapter-trigger" aria-expanded="false" aria-controls="todayPanel">
+                    <div class="chapter-visual">
+                        <img
+                            src="https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                            alt="City glowing at night"
+                            loading="lazy"
+                            class="chapter-visual-img">
+                        <div class="chapter-visual-glow" aria-hidden="true"></div>
+                        <div class="chapter-visual-particles" aria-hidden="true">
+                            <span>✨</span><span>🎆</span><span>🪔</span><span>🌸</span>
+                        </div>
+                    </div>
+                    <div class="chapter-summary">
+                        <span class="chapter-icon" aria-hidden="true">✨</span>
+                        <span class="section-kicker">Diwali Today</span>
+                        <h2>The Celebration Continues</h2>
+                        <p>
+                            Modern Diwali can bring challenges for air, noise and waste —
+                            and thoughtful choices keep the joy kinder.
+                        </p>
+                        <span class="chapter-expand-hint">
+                            <span class="hint-label">Explore today</span>
+                            <span class="hint-arrow" aria-hidden="true">→</span>
+                        </span>
+                    </div>
+                </button>
+
+                <div id="todayPanel" class="chapter-panel" hidden>
+                    <div class="chapter-panel-inner">
+                        <div class="scene-strip" role="list">
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=600&q=80" alt="Hazy city atmosphere" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="tradition-icon" aria-hidden="true">🌫️</span>
+                                    <h3>Smoke &amp; Air</h3>
+                                    <p>Fireworks can raise fine particles; monitoring studies record festival-period spikes.</p>
+                                </div>
+                            </article>
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&q=80" alt="Protective mask" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="tradition-icon" aria-hidden="true">❤️</span>
+                                    <h3>Health &amp; Noise</h3>
+                                    <p>Smoke and loud sounds can be hard on children, elders, animals and sensitive lungs.</p>
+                                </div>
+                            </article>
+                            <article class="scene-card" role="listitem">
+                                <img src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Waste on a street" loading="lazy">
+                                <div class="scene-card-body">
+                                    <span class="tradition-icon" aria-hidden="true">♻️</span>
+                                    <h3>What Remains</h3>
+                                    <p>Burnt paper and cracker waste can linger long after the celebration ends.</p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="today-remedies-compact">
+                            <h3 class="remedies-title">We don't have to lose the joy</h3>
+                            <div class="remedies-chips">
+                                <span class="remedy-chip">🪔 Light more diyas</span>
+                                <span class="remedy-chip">🌸 Rangoli &amp; colours</span>
+                                <span class="remedy-chip">👨‍👩‍👧‍👦 Celebrate together</span>
+                                <span class="remedy-chip">♻️ Clean up together</span>
+                            </div>
+                            <p class="chapter-panel-note">Celebrate the joy. Protect the air. Keep the light alive.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- FINAL -->
+        <section class="finale-section">
+            <div class="finale-inner cinematic-reveal">
+                <span class="finale-diya" aria-hidden="true">🪔</span>
+                <h2>The story of Diwali<br>is still being written.</h2>
+                <p>
+                    From ancient stories and timeless traditions
+                    to the way we celebrate today, every generation
+                    adds something of its own.
+                </p>
+                <p>
+                    And perhaps the most beautiful part is simple:
+                    the light keeps moving forward.
+                </p>
+                <div class="finale-symbols" aria-hidden="true">✨ 🪔 🌸 🪔 ✨</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-diya" aria-hidden="true">🪔</div>
+        <h3>Diwali — A Journey Through Light</h3>
+        <p>Stories · Traditions · Celebrations · Today</p>
+        <p class="footer-small">Created as a visual cultural exploration of Diwali.</p>
+        <p class="footer-small">Photos via Pexels &amp; Unsplash (free to use).</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+{
+  "chapters": [
+    {
+      "id": "diwali-begins",
+      "order": 1,
+      "title": "The Many Stories of Diwali",
+      "category": "origins",
+      "tradition": "Multiple Indian traditions",
+      "location": "Across India and the Indian diaspora",
+      "summary": "Diwali is a major festival celebrated through many regional, religious and cultural traditions. Its stories, rituals and meanings vary across communities.",
+      "historical_note": "Diwali does not have a single origin story shared by all communities. Different traditions connect the festival with different religious and cultural narratives.",
+      "cinematic": {
+        "opening": "A night of lamps begins across ancient cities, villages and riverbanks.",
+        "video": "/videos/scenes/diwali-origins.mp4",
+        "scenes": [
+          {
+            "id": "origins-01",
+            "title": "Night of Lamps",
+            "description": "Oil lamps begin glowing as evening falls."
+          },
+          {
+            "id": "origins-02",
+            "title": "Ancient Celebrations",
+            "description": "Traditional communities gather for seasonal celebrations."
+          },
+          {
+            "id": "origins-03",
+            "title": "Many Traditions",
+            "description": "Different communities develop their own stories and rituals."
+          }
+        ]
+      }
+    },
+    {
+      "id": "roots-and-traditions",
+      "order": 2,
+      "title": "Roots and Traditions",
+      "category": "culture",
+      "tradition": "Indian cultural traditions",
+      "location": "Different regions of India",
+      "summary": "The festival developed through diverse traditions involving lamps, worship, family gatherings, food, gifts, markets and community celebrations.",
+      "historical_note": "Practices associated with Diwali differ significantly between regions and communities.",
+      "cinematic": {
+        "opening": "Across India, homes and streets slowly transform as lamps are prepared for the festival.",
+        "video": "/videos/scenes/diwali-roots.mp4",
+        "scenes": [
+          {
+            "id": "roots-01",
+            "title": "Preparing the Diyas",
+            "description": "Clay lamps are prepared and filled with oil."
+          },
+          {
+            "id": "roots-02",
+            "title": "Decorating Homes",
+            "description": "Homes are decorated with lamps, flowers and rangoli."
+          },
+          {
+            "id": "roots-03",
+            "title": "Festival Markets",
+            "description": "Markets become active with sweets, clothing, decorations and gifts."
+          }
+        ]
+      }
+    },
+    {
+      "id": "rama-story",
+      "order": 3,
+      "title": "Rama, Sita and the Journey Home",
+      "category": "religious_tradition",
+      "tradition": "Hindu",
+      "location": "Ayodhya and the Ramayana tradition",
+      "summary": "One widely observed Hindu tradition connects Diwali with Rama's return to Ayodhya after fourteen years of exile.",
+      "historical_note": "This chapter represents the Ramayana tradition and should be presented as a religious and cultural narrative rather than independently verified historical documentation.",
+      "cinematic": {
+        "opening": "Rama, Sita and Lakshmana begin their journey home as the sun begins to set.",
+        "video": "/videos/scenes/diwali-rama-story-40sec.mp4",
+        "scenes": [
+          {
+            "id": "rama-01",
+            "title": "The Journey Home",
+            "description": "Rama, Sita and Lakshmana begin their journey toward Ayodhya."
+          },
+          {
+            "id": "rama-02",
+            "title": "Across the Landscape",
+            "description": "The journey continues through forests and landscapes as evening approaches."
+          },
+          {
+            "id": "rama-03",
+            "title": "Ayodhya Awaits",
+            "description": "The people of Ayodhya prepare lamps for Rama's return."
+          },
+          {
+            "id": "rama-04",
+            "title": "The City of Lamps",
+            "description": "Ayodhya is illuminated with rows of lamps as the returning figures approach."
+          },
+          {
+            "id": "rama-05",
+            "title": "A Celebration of Light",
+            "description": "The return becomes a symbolic celebration of light, hope and renewal."
+          }
+        ]
+      }
+    },
+    {
+      "id": "krishna-narakasura",
+      "order": 4,
+      "title": "Krishna and Narakasura",
+      "category": "religious_tradition",
+      "tradition": "Hindu",
+      "location": "Krishna traditions in India",
+      "summary": "In another Hindu tradition, Naraka Chaturdashi is associated with Krishna's victory over Narakasura.",
+      "historical_note": "The story belongs to Hindu religious tradition and has different regional forms and interpretations.",
+      "cinematic": {
+        "opening": "Before sunrise, lamps illuminate a city preparing for Naraka Chaturdashi.",
+        "video": "/videos/scenes/diwali-krishna-narakasura.mp4",
+        "scenes": [
+          {
+            "id": "krishna-01",
+            "title": "Before Sunrise",
+            "description": "The city prepares for the festival before dawn."
+          },
+          {
+            "id": "krishna-02",
+            "title": "The Battle",
+            "description": "A traditional depiction of Krishna confronting Narakasura."
+          },
+          {
+            "id": "krishna-03",
+            "title": "Victory",
+            "description": "The story concludes with the defeat of Narakasura."
+          }
+        ]
+      }
+    },
+    {
+      "id": "lakshmi-prosperity",
+      "order": 5,
+      "title": "Lakshmi and the Festival of Prosperity",
+      "category": "religious_tradition",
+      "tradition": "Hindu",
+      "location": "Homes and communities across India",
+      "summary": "Lakshmi Puja is an important part of Diwali observance for many Hindu communities, with prayers associated with prosperity, abundance and well-being.",
+      "historical_note": "The form and timing of Lakshmi worship varies between regions and communities.",
+      "cinematic": {
+        "opening": "As darkness falls, homes are illuminated and families prepare for Lakshmi Puja.",
+        "video": "/videos/scenes/diwali-lakshmi.mp4",
+        "scenes": [
+          {
+            "id": "lakshmi-01",
+            "title": "Preparing the Home",
+            "description": "Families clean and decorate their homes before the evening worship."
+          },
+          {
+            "id": "lakshmi-02",
+            "title": "Lakshmi Puja",
+            "description": "Families gather for prayers and traditional rituals."
+          },
+          {
+            "id": "lakshmi-03",
+            "title": "Light and Prosperity",
+            "description": "Rows of lamps create a warm atmosphere around homes and temples."
+          }
+        ]
+      }
+    },
+    {
+      "id": "jain-diwali",
+      "order": 6,
+      "title": "Mahavira and Jain Diwali",
+      "category": "religious_tradition",
+      "tradition": "Jain",
+      "location": "Jain communities in India",
+      "summary": "For Jains, Diwali is associated with the liberation, or nirvana, of Mahavira, the twenty-fourth Tirthankara.",
+      "historical_note": "Jain communities observe Diwali through religious practices connected with Mahavira's nirvana.",
+      "cinematic": {
+        "opening": "Quiet lamps glow around Jain temples as devotees gather in remembrance.",
+        "video": "/videos/scenes/diwali-jain-tradition.mp4",
+        "scenes": [
+          {
+            "id": "jain-01",
+            "title": "The Temple",
+            "description": "A Jain temple is illuminated during the festival."
+          },
+          {
+            "id": "jain-02",
+            "title": "Remembering Mahavira",
+            "description": "Devotees gather for prayer and remembrance."
+          },
+          {
+            "id": "jain-03",
+            "title": "The Light of Knowledge",
+            "description": "Lamps symbolize spiritual illumination and remembrance."
+          }
+        ]
+      }
+    },
+    {
+      "id": "sikh-bandi-chhor",
+      "order": 7,
+      "title": "Bandi Chhor Divas",
+      "category": "religious_tradition",
+      "tradition": "Sikh",
+      "location": "Sikh communities, especially Amritsar",
+      "summary": "Sikh communities observe Bandi Chhor Divas around the same period as Diwali, commemorating the release of Guru Hargobind and other prisoners.",
+      "historical_note": "Bandi Chhor Divas is a distinct Sikh observance with its own historical and religious significance.",
+      "cinematic": {
+        "opening": "The Golden Temple complex begins to glow with lamps as evening arrives.",
+        "video": "/videos/scenes/bandi-chhor-divas.mp4",
+        "scenes": [
+          {
+            "id": "sikh-01",
+            "title": "The Golden Temple",
+            "description": "The Harmandir Sahib is illuminated during the celebration."
+          },
+          {
+            "id": "sikh-02",
+            "title": "Bandi Chhor",
+            "description": "The tradition remembers Guru Hargobind and the release of prisoners."
+          },
+          {
+            "id": "sikh-03",
+            "title": "Community Celebration",
+            "description": "Families and communities gather for prayers and celebration."
+          }
+        ]
+      }
+    },
+    {
+      "id": "diwali-today",
+      "order": 8,
+      "title": "Diwali Today",
+      "category": "modern_culture",
+      "tradition": "Contemporary celebrations",
+      "location": "India and the global Indian diaspora",
+      "summary": "Today Diwali is celebrated through family gatherings, prayers, travel, food, shopping, gifts, decorations, community events and public celebrations.",
+      "historical_note": "Modern Diwali celebrations combine religious observances with regional customs and contemporary social and commercial practices.",
+      "cinematic": {
+        "opening": "Modern cities begin to glow as families prepare for another night of Diwali.",
+        "video": "/videos/scenes/diwali-today.mp4",
+        "scenes": [
+          {
+            "id": "today-01",
+            "title": "Modern Cities",
+            "description": "Cities across India light up during the festival."
+          },
+          {
+            "id": "today-02",
+            "title": "Families Together",
+            "description": "Families gather, exchange gifts and share festive meals."
+          },
+          {
+            "id": "today-03",
+            "title": "Diwali Around the World",
+            "description": "Indian communities celebrate Diwali in cities across the world."
+          }
+        ]
+      }
+    },
+    {
+      "id": "effects-and-challenges",
+      "order": 9,
+      "title": "The Changing Festival",
+      "category": "environment",
+      "tradition": "Contemporary discussion",
+      "location": "Cities and communities across India",
+      "summary": "Modern Diwali celebrations also bring discussions about air quality, noise, waste, public safety and more sustainable ways to celebrate.",
+      "historical_note": "Environmental and public-health impacts associated with fireworks have been documented by Indian environmental authorities. The scale and effects vary by location, weather and celebration patterns.",
+      "cinematic": {
+        "opening": "After the celebration, a city slowly becomes quiet as the final lamps continue to glow.",
+        "video": "/videos/scenes/diwali-environment.mp4",
+        "scenes": [
+          {
+            "id": "effects-01",
+            "title": "The Celebration",
+            "description": "Fireworks and lights fill the night sky."
+          },
+          {
+            "id": "effects-02",
+            "title": "The Morning After",
+            "description": "Streets and neighborhoods begin returning to normal after the celebrations."
+          },
+          {
+            "id": "effects-03",
+            "title": "A Changing Conversation",
+            "description": "Communities discuss cleaner, safer and more responsible ways to celebrate."
+          }
+        ]
+      }
+    },
+    {
+      "id": "future-diwali",
+      "order": 10,
+      "title": "The Future of Diwali",
+      "category": "future",
+      "tradition": "Contemporary and evolving traditions",
+      "location": "India and communities around the world",
+      "summary": "Diwali continues to evolve as communities balance traditional rituals with changing technology, lifestyles and environmental awareness.",
+      "historical_note": "The future of the festival will depend on how communities continue to preserve traditions while adapting celebrations to contemporary circumstances.",
+      "cinematic": {
+        "opening": "One by one, the lamps of the present become lights leading toward the future.",
+        "video": "/videos/scenes/future-diwali.mp4",
+        "scenes": [
+          {
+            "id": "future-01",
+            "title": "Tradition Continues",
+            "description": "Traditional lamps and rituals remain part of the celebration."
+          },
+          {
+            "id": "future-02",
+            "title": "New Generations",
+            "description": "Younger generations carry familiar traditions into new environments."
+          },
+          {
+            "id": "future-03",
+            "title": "A Festival That Evolves",
+            "description": "The festival continues to change while retaining its cultural significance."
+          }
+        ]
+      }
+    }
+  ]
+}
