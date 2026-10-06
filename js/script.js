@@ -13,7 +13,9 @@
     const surpriseDecorations = document.getElementById('surpriseDecorations');
     const cinematicVideoWrapper = document.getElementById('cinematicVideoWrapper');
     const openingCinematicVideo = document.getElementById('openingCinematicVideo');
-    const homeVideo = document.getElementById('homeBackgroundVideo');
+    const globalBgVideo = document.getElementById('globalBackgroundVideo');
+    // legacy id kept for compatibility if present
+    const homeVideo = document.getElementById('homeBackgroundVideo') || globalBgVideo;
 
     /* ---------- Header scroll ---------- */
     function handleNavigationScroll() {
@@ -56,16 +58,19 @@
         });
     });
 
-    /* ---------- Home background video ---------- */
-    if (homeVideo) {
-        homeVideo.muted = true;
-        function playHomeVideo() {
-            const p = homeVideo.play();
-            if (p && p.catch) p.catch(function () {});
-        }
-        playHomeVideo();
-        window.addEventListener('load', playHomeVideo, { once: true });
+    /* ---------- Global Space background video ---------- */
+    function playGlobalBg() {
+        const vid = globalBgVideo || homeVideo;
+        if (!vid) return;
+        vid.muted = true;
+        const p = vid.play();
+        if (p && p.catch) p.catch(function () {});
     }
+    playGlobalBg();
+    window.addEventListener('load', playGlobalBg, { once: true });
+    document.addEventListener('visibilitychange', function () {
+        if (!document.hidden) playGlobalBg();
+    });
 
     /* ---------- Scroll reveals ---------- */
     const revealElements = document.querySelectorAll('.cinematic-reveal');
