@@ -2633,3 +2633,90 @@ button,
     scrollbar-width: thin;
     scrollbar-color: rgba(217, 164, 65, 0.4) transparent;
 }
+
+/* =========================================================
+   FINAL PERSONAL DIWALI GREETING — YOGESWARI
+   This is the final section of the website.
+   The old generic footer is no longer required.
+========================================================= */
+
+.personal-diwali-section {
+    position: relative;
+    width: 100%;
+    min-height: 0;
+    padding: 70px 24px 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent !important;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.personal-diwali-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            ellipse 55% 45% at 50% 50%,
+            rgba(217, 164, 65, 0.10),
+            transparent 70%
+        );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.personal-diwali-image {
+    position: relative;
+    z-index: 1;
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid rgba(217, 164, 65, 0.45);
+    background: rgba(8, 4, 2, 0.35);
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.55),
+        0 0 50px rgba(217, 164, 65, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.personal-diwali-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Keep the final image clean on smaller screens */
+@media (max-width: 768px) {
+    .personal-diwali-section {
+        padding: 45px 16px 60px;
+    }
+
+    .personal-diwali-image {
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .personal-diwali-section {
+        padding: 35px 12px 45px;
+    }
+
+    .personal-diwali-image {
+        border-radius: 14px;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .personal-diwali-section,
+    .personal-diwali-image {
+        transition: none !important;
+    }
+}
+
