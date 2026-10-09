@@ -1,865 +1,902 @@
 /* =========================================================
+
    DIWALI — A Journey Through Light
+
    Interactive cinematic script
+
 ========================================================= */
 
+
+
 (function () {
+
     'use strict';
 
+
+
     const siteHeader = document.getElementById('siteHeader');
+
     const mainNav = document.getElementById('mainNav');
+
     const navToggle = document.getElementById('navToggle');
+
     const surpriseButton = document.getElementById('surpriseButton');
+
     const surpriseDecorations = document.getElementById('surpriseDecorations');
+
     const cinematicVideoWrapper = document.getElementById('cinematicVideoWrapper');
+
     const openingCinematicVideo = document.getElementById('openingCinematicVideo');
 
-    if (openingCinematicVideo) {
-        openingCinematicVideo.playbackRate = 0.75;
-        openingCinematicVideo.defaultPlaybackRate = 0.75;
-    }
-
     const globalBgVideo = document.getElementById('globalBackgroundVideo');
+
+    // legacy id kept for compatibility if present
+
     const homeVideo = document.getElementById('homeBackgroundVideo') || globalBgVideo;
 
+    // Use a slower default playback speed for all videos on this page.
+    [globalBgVideo, openingCinematicVideo, homeVideo].filter(Boolean).forEach(function (video) {
+        video.defaultPlaybackRate = 0.75;
+        video.playbackRate = 0.75;
+        if (video === openingCinematicVideo) video.loop = true;
+        video.addEventListener('loadedmetadata', function () {
+            video.playbackRate = 0.75;
+            if (video === openingCinematicVideo) video.loop = true;
+        });
+    });
+
+
+
+    /* ---------- Header scroll ---------- */
+
     function handleNavigationScroll() {
+
         if (!siteHeader) return;
+
         siteHeader.classList.toggle('scrolled', window.scrollY > 40);
+
     }
+
     window.addEventListener('scroll', handleNavigationScroll, { passive: true });
+
     handleNavigationScroll();
 
+
+
+    /* ---------- Mobile nav ---------- */
+
     if (navToggle && mainNav) {
+
         navToggle.addEventListener('click', function () {
+
             const isOpen = mainNav.classList.toggle('open');
+
             navToggle.classList.toggle('active', isOpen);
+
             navToggle.setAttribute('aria-expanded', String(isOpen));
+
             navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
+
         });
+
+
 
         mainNav.querySelectorAll('a').forEach(function (link) {
+
             link.addEventListener('click', function () {
+
                 mainNav.classList.remove('open');
+
                 navToggle.classList.remove('active');
+
                 navToggle.setAttribute('aria-expanded', 'false');
+
                 navToggle.setAttribute('aria-label', 'Open navigation');
+
             });
+
         });
+
     }
+
+
+
+    /* ---------- Smooth anchors ---------- */
 
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+
         anchor.addEventListener('click', function (event) {
+
             const targetId = this.getAttribute('href');
+
             if (!targetId || targetId === '#') return;
+
             const target = document.querySelector(targetId);
+
             if (!target) return;
+
             event.preventDefault();
+
             const headerHeight = siteHeader ? siteHeader.offsetHeight : 0;
+
             const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
             window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+
         });
+
     });
+
+
+
+    /* ---------- Global Space background video ---------- */
 
     function playGlobalBg() {
+
         const vid = globalBgVideo || homeVideo;
+
         if (!vid) return;
+
         vid.muted = true;
+
         const p = vid.play();
+
         if (p && p.catch) p.catch(function () {});
+
     }
+
     playGlobalBg();
+
     window.addEventListener('load', playGlobalBg, { once: true });
+
     document.addEventListener('visibilitychange', function () {
+
         if (!document.hidden) playGlobalBg();
+
     });
 
+
+
+    /* ---------- Scroll reveals ---------- */
+
     const revealElements = document.querySelectorAll('.cinematic-reveal');
+
     if ('IntersectionObserver' in window && revealElements.length > 0) {
+
         const revealObserver = new IntersectionObserver(
+
             function (entries) {
+
                 entries.forEach(function (entry) {
+
                     if (entry.isIntersecting) {
+
                         entry.target.classList.add('visible');
+
                         revealObserver.unobserve(entry.target);
+
                     }
+
                 });
+
             },
+
             { threshold: 0.12, rootMargin: '0px 0px -50px 0px' }
+
         );
+
         revealElements.forEach(function (el) { revealObserver.observe(el); });
+
     } else {
+
         revealElements.forEach(function (el) { el.classList.add('visible'); });
+
     }
 
 
-    /* ---------- Enhanced Diwali confetti (papers, hearts, flowers, sparkles) ---------- */
+
+    /* ---------- Confetti papers ---------- */
+
     function createExtraConfetti() {
+
         if (!surpriseDecorations) return;
+
         const papers = surpriseDecorations.querySelectorAll('.paper');
+
         papers.forEach(function (paper, index) {
-            const drift = (Math.random() * 160 - 80).toFixed(0) + 'px';
-            const spin = (480 + Math.random() * 600).toFixed(0) + 'deg';
+
             paper.style.left = (Math.random() * 96) + '%';
+
             paper.style.setProperty('--i', index + 1);
-            paper.style.setProperty('--drift', drift);
-            paper.style.setProperty('--spin', spin);
-            paper.style.animationDelay = (Math.random() * 0.55) + 's';
-            paper.style.animationDuration = (2.6 + Math.random() * 2.2) + 's';
-            // tiny size variety
-            const w = 2.5 + Math.random() * 3.5;
-            const h = 4 + Math.random() * 5;
-            paper.style.width = w + 'px';
-            paper.style.height = h + 'px';
+
+            paper.style.animationDelay = (Math.random() * 0.8) + 's';
+
+            paper.style.animationDuration = (2.8 + Math.random() * 1.8) + 's';
+
         });
+
     }
 
+
+
+    /* ---------- Floating emoji celebration ---------- */
 
     function createFloatingCelebration() {
+
         const emojis = ['✨', '🪔', '🌸', '🌼', '🎆', '🎇', '💫', '🪷', '⭐', '🌺'];
+
         const container = document.createElement('div');
+
         container.className = 'temporary-diwali-celebration';
+
         container.setAttribute('aria-hidden', 'true');
 
+
+
         for (let i = 0; i < 35; i++) {
+
             const el = document.createElement('span');
+
             el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
             const size = 18 + Math.random() * 26;
+
             el.style.left = (Math.random() * 100) + '%';
+
             el.style.fontSize = size + 'px';
+
             el.style.animationDelay = (Math.random() * 1.2) + 's';
+
             el.style.animationDuration = (2.5 + Math.random() * 2.5) + 's';
+
             el.style.animationName = 'diwaliFloat';
+
             el.style.animationTimingFunction = 'ease-out';
+
             el.style.animationFillMode = 'forwards';
+
             container.appendChild(el);
+
         }
+
+
 
         document.body.appendChild(container);
+
         setTimeout(function () { container.remove(); }, 5500);
+
     }
 
-    /* CRITICAL: remove hidden attribute or video stays display:none */
-    function showVideoWrapper() {
-        if (!cinematicVideoWrapper) {
-            console.warn('cinematicVideoWrapper not found');
-            return;
-        }
-        cinematicVideoWrapper.removeAttribute('hidden');
-        cinematicVideoWrapper.hidden = false;
-        cinematicVideoWrapper.classList.add('video-visible');
-        cinematicVideoWrapper.style.display = 'block';
-        cinematicVideoWrapper.style.opacity = '1';
-        cinematicVideoWrapper.style.visibility = 'visible';
-        cinematicVideoWrapper.style.transform = 'translateY(0)';
-    }
+
+
+    /* ---------- Start surprise video ---------- */
 
     function startVideo() {
+
         if (!openingCinematicVideo) {
+
             console.warn('openingCinematicVideo not found.');
+
             return;
+
         }
 
-        openingCinematicVideo.playbackRate = 0.75;
-        openingCinematicVideo.defaultPlaybackRate = 0.75;
+        if (cinematicVideoWrapper) {
 
-        showVideoWrapper();
+            cinematicVideoWrapper.classList.add('video-visible');
+
+        }
 
         try {
+
             openingCinematicVideo.currentTime = 0;
+
         } catch (e) {
+
             console.warn('Unable to reset video:', e);
+
         }
 
         const playPromise = openingCinematicVideo.play();
+
         if (playPromise !== undefined) {
-            playPromise
-                .then(function () {
-                    if (cinematicVideoWrapper) {
-                        cinematicVideoWrapper.classList.add('is-playing');
-                    }
-                })
-                .catch(function (err) {
-                    console.warn('Autoplay blocked — use controls or New Tab:', err);
-                    showVideoWrapper();
-                });
+
+            playPromise.catch(function (err) {
+
+                console.warn('Autoplay blocked — use controls to play:', err);
+
+            });
+
         }
+
     }
+
+
+
+    /* ---------- Open Diwali Surprise ---------- */
 
     let surpriseAlreadyPlayed = false;
 
+
+
     function triggerDiwaliSurprise() {
+
         if (!surpriseButton) return;
 
+
+
         if (surpriseAlreadyPlayed) {
-            startVideo();
             return;
         }
+
         surpriseAlreadyPlayed = true;
+
+
 
         surpriseButton.classList.add('opened', 'surprise-opened');
 
+
+
         if (surpriseDecorations) {
+
             surpriseDecorations.classList.add('active');
+
             createExtraConfetti();
-            launchDiwaliConfettiBurst();
+
         }
 
+
+
         createFloatingCelebration();
-        showVideoWrapper();
+
+
 
         setTimeout(function () {
+
             if (cinematicVideoWrapper) {
+
                 cinematicVideoWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
             }
-        }, 450);
+
+        }, 850);
+
+
 
         setTimeout(startVideo, 700);
 
+
+
         setTimeout(function () {
+
             if (surpriseDecorations) {
+
                 surpriseDecorations.classList.remove('active');
+
             }
+
         }, 4300);
+
     }
+
+
 
     if (surpriseButton) {
+
         surpriseButton.addEventListener('click', triggerDiwaliSurprise);
+
         surpriseButton.addEventListener('keydown', function (event) {
+
             if (event.key === 'Enter' || event.key === ' ') {
+
                 event.preventDefault();
+
                 triggerDiwaliSurprise();
+
             }
+
         });
-    } else {
-        console.warn('surpriseButton not found');
+
     }
+
+
+
+    /* ---------- Video events ---------- */
 
     if (openingCinematicVideo) {
+
         openingCinematicVideo.addEventListener('play', function () {
+
             if (cinematicVideoWrapper) {
+
                 cinematicVideoWrapper.classList.add('is-playing');
+
             }
+
         });
+
+
 
         openingCinematicVideo.addEventListener('ended', function () {
+
             if (cinematicVideoWrapper) {
+
                 cinematicVideoWrapper.classList.add('video-finished');
+
             }
+
             setTimeout(function () {
+
                 const journey = document.getElementById('journey');
+
                 if (journey) {
+
                     journey.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
                 }
+
             }, 1200);
+
         });
+
+
 
         openingCinematicVideo.addEventListener('pause', function () {
+
             if (
+
                 openingCinematicVideo.currentTime < openingCinematicVideo.duration &&
+
                 cinematicVideoWrapper
+
             ) {
+
                 cinematicVideoWrapper.classList.remove('is-playing');
+
             }
+
         });
+
+
 
         openingCinematicVideo.addEventListener('error', function () {
+
             console.error(
+
                 'Diwali cinematic video could not be loaded. Expected path:',
+
                 'Assets/videos/scenes/diwali-rama-story-40sec.mp4'
+
             );
-            showVideoWrapper();
+
         });
+
     }
+
+
+
+    /* ---------- Soft glowing particle trail + click burst ---------- */
+    (function initFestivePointerEffects() {
+        const colors = ['#ffe066', '#ffb703', '#fb8500', '#f25c54', '#ff4d6d', '#c9184a', '#4ecdc4', '#48bfe3', '#9b5de5'];
+        let lastTrail = 0;
+
+        function makeGlow(x, y, burst = false) {
+            const particle = document.createElement('span');
+            particle.className = burst ? 'diwali-pointer-particle is-burst' : 'diwali-pointer-particle';
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const size = burst ? (4 + Math.random() * 7) : (5 + Math.random() * 8);
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.setProperty('--pointer-color', color);
+            particle.style.setProperty('--pointer-x', ((Math.random() - 0.5) * (burst ? 170 : 48)) + 'px');
+            particle.style.setProperty('--pointer-y', ((Math.random() - 0.5) * (burst ? 170 : 48)) + 'px');
+            particle.style.setProperty('--particle-life', (burst ? (0.8 + Math.random() * 0.5) : (1.1 + Math.random() * 0.7)) + 's');
+            document.body.appendChild(particle);
+            particle.addEventListener('animationend', () => particle.remove(), { once: true });
+            window.setTimeout(() => particle.remove(), burst ? 1500 : 2000);
+        }
+
+        window.addEventListener('mousemove', function (event) {
+            const now = performance.now();
+            if (now - lastTrail < 32) return;
+            lastTrail = now;
+            makeGlow(event.clientX, event.clientY, false);
+            // A few occasional companion glows create the soft, floating look in the reference.
+            if (Math.random() < 0.34) {
+                makeGlow(event.clientX + (Math.random() - 0.5) * 14, event.clientY + (Math.random() - 0.5) * 14, false);
+            }
+        }, { passive: true });
+
+        window.addEventListener('click', function (event) {
+            for (let i = 0; i < 26; i++) makeGlow(event.clientX, event.clientY, true);
+        }, { passive: true });
+    })();
+
+    /* ---------- Hero particle parallax ---------- */
 
     const heroParticles = document.querySelectorAll('.hero-particles span');
+
     if (
+
         heroParticles.length > 0 &&
+
         window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+
     ) {
+
         window.addEventListener('mousemove', function (event) {
+
             const x = (event.clientX / window.innerWidth - 0.5) * 12;
+
             const y = (event.clientY / window.innerHeight - 0.5) * 12;
+
             heroParticles.forEach(function (particle, index) {
+
                 const factor = (index + 1) * 0.15;
+
                 particle.style.transform = 'translate(' + (x * factor) + 'px, ' + (y * factor) + 'px)';
+
             });
+
         }, { passive: true });
+
     }
+
+
+
+    /* ---------- Today particles stagger ---------- */
 
     const todaySection = document.getElementById('today');
+
     if (todaySection) {
-        todaySection.querySelectorAll('.today-particles span, .chapter-visual-particles span').forEach(function (particle, index) {
+
+        todaySection.querySelectorAll('.today-particles span').forEach(function (particle, index) {
+
             particle.style.animationDelay = (index * 0.35) + 's';
+
         });
+
     }
+
+
+
+    /* ---------- Page load ---------- */
 
     window.addEventListener('load', function () {
+
         document.body.classList.add('page-loaded');
+
         if (openingCinematicVideo) {
+
             openingCinematicVideo.pause();
+
             try {
+
                 openingCinematicVideo.currentTime = 0;
+
             } catch (e) {}
+
         }
+
     });
 
+
+
+    /* ---------- Reduced motion ---------- */
+
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+
         document.querySelectorAll('.cinematic-reveal').forEach(function (el) {
+
             el.classList.add('visible');
+
         });
+
     }
+
+
+
+
+
+
+
+    /* =========================================================
+
+       COMPACT CHAPTER ACCORDION
+
+       One of Journey / Traditions / Today open at a time
+
+    ========================================================= */
+
+
 
     const chapterRows = document.querySelectorAll('.chapter-row');
 
+
+
     function closeAllChapters(except) {
+
         chapterRows.forEach(function (row) {
+
             if (except && row === except) return;
+
             row.classList.remove('is-open');
+
             const btn = row.querySelector('.chapter-trigger');
+
             const panel = row.querySelector('.chapter-panel');
+
             if (btn) btn.setAttribute('aria-expanded', 'false');
+
             if (panel) {
+
                 panel.hidden = true;
+
             }
+
         });
+
     }
+
+
 
     function openChapter(row) {
+
         closeAllChapters(row);
+
         row.classList.add('is-open');
+
         const btn = row.querySelector('.chapter-trigger');
+
         const panel = row.querySelector('.chapter-panel');
+
         if (btn) btn.setAttribute('aria-expanded', 'true');
+
         if (panel) {
+
             panel.hidden = false;
+
         }
+
+        // Soft scroll so expanded panel stays in view
+
         setTimeout(function () {
+
             const headerH = siteHeader ? siteHeader.offsetHeight : 0;
+
             const top = row.getBoundingClientRect().top + window.pageYOffset - headerH - 12;
+
             window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+
         }, 80);
+
     }
+
+
 
     chapterRows.forEach(function (row) {
+
         const btn = row.querySelector('.chapter-trigger');
+
         if (!btn) return;
 
+
+
         btn.addEventListener('click', function () {
+
             const isOpen = row.classList.contains('is-open');
+
             if (isOpen) {
+
                 closeAllChapters(null);
+
             } else {
+
                 openChapter(row);
+
             }
+
         });
+
     });
 
-    
 
-    /* ---------- Festive colorful cursor trail ---------- */
-    (function initDiwaliCursor() {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        if (window.matchMedia('(max-width: 768px)').matches) return;
-        if (!window.matchMedia('(pointer: fine)').matches) return;
 
-        var colors = [
-            '#FFD76A', '#FF9F1C', '#FF6B35', '#E8B84A',
-            '#FF4D6D', '#C77DFF', '#4CC9F0', '#80FFDB',
-            '#FFB703', '#FB8500'
-        ];
-        var dots = [];
-        var count = 14;
-        var mouseX = -100;
-        var mouseY = -100;
-
-        for (var i = 0; i < count; i++) {
-            var d = document.createElement('div');
-            d.className = 'diwali-cursor-dot';
-            d.style.background = colors[i % colors.length];
-            d.style.boxShadow = '0 0 10px ' + colors[i % colors.length];
-            d.style.width = (10 - i * 0.45) + 'px';
-            d.style.height = (10 - i * 0.45) + 'px';
-            document.body.appendChild(d);
-            dots.push({ el: d, x: -100, y: -100 });
-        }
-
-        document.addEventListener('mousemove', function (e) {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        }, { passive: true });
-
-        document.addEventListener('mouseleave', function () {
-            mouseX = -100;
-            mouseY = -100;
+    // Open the Rama story video in a separate browser tab.
+    const openVideoInNewTabButton = document.getElementById('openVideoInNewTab');
+    if (openVideoInNewTabButton) {
+        openVideoInNewTabButton.addEventListener('click', function () {
+            window.open('Assets/videos/scenes/diwali-rama-story-40sec.mp4', '_blank', 'noopener');
         });
-
-        function animateCursor() {
-            var x = mouseX;
-            var y = mouseY;
-            dots.forEach(function (dot, i) {
-                var nextX = i === 0 ? x : dots[i - 1].x;
-                var nextY = i === 0 ? y : dots[i - 1].y;
-                dot.x += (nextX - dot.x) * (0.28 - i * 0.012);
-                dot.y += (nextY - dot.y) * (0.28 - i * 0.012);
-                dot.el.style.left = dot.x + 'px';
-                dot.el.style.top = dot.y + 'px';
-                dot.el.style.opacity = mouseX < 0 ? '0' : String(0.85 - i * 0.05);
-            });
-            requestAnimationFrame(animateCursor);
-        }
-        requestAnimationFrame(animateCursor);
-    })();
-
-    
-
+    }
 
     /* =========================================================
-       CONFETTI — Home ambient | Surprise burst | Final photo only
-       NO confetti on Journey / Traditions / Today / nav clicks
+       FESTIVE PAPER CONFETTI — HOME, SURPRISE, FINAL PHOTO
+       Kept separate from the existing navigation/video effects.
     ========================================================= */
+    (function initFestivePaperConfetti() {
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const mobile = window.matchMedia('(max-width: 768px)').matches;
+        const paperColors = ['#ff4d6d','#ff2d55','#ff8fab','#ff9500','#ffd60a','#ffe566','#ffcc00','#d9a441','#30d158','#80ffdb','#0a84ff','#4cc9f0','#af52de','#c77dff'];
 
-    var confettiReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var confettiMobile = window.matchMedia('(max-width: 768px)').matches;
-
-    function makeTinyPiece(colors) {
-        var piece = document.createElement('div');
-        piece.className = 'diwali-confetti-piece is-paper';
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        var roll = Math.random();
-
-        if (roll < 0.08) {
-            piece.className = 'diwali-confetti-piece is-heart-emoji';
-            piece.textContent = Math.random() > 0.5 ? '♥' : '•';
-            piece.style.fontSize = (4 + Math.random() * 3) + 'px';
-            piece.style.color = color;
-            piece.style.background = 'none';
-        } else if (roll < 0.14) {
-            piece.className = 'diwali-confetti-piece is-sparkle-emoji';
-            piece.textContent = '✦';
-            piece.style.fontSize = (3 + Math.random() * 3) + 'px';
-            piece.style.color = color;
-            piece.style.background = 'none';
-        } else if (roll < 0.40) {
-            var d = 2 + Math.random() * 2.5;
-            piece.style.width = d + 'px';
-            piece.style.height = d + 'px';
-            piece.style.borderRadius = '50%';
-            piece.style.background = color;
-        } else {
-            var w = 2 + Math.random() * 3;
-            var h = 3 + Math.random() * 4.5;
-            piece.style.width = w + 'px';
-            piece.style.height = h + 'px';
-            piece.style.borderRadius = '1px';
-            piece.style.background = color;
-        }
-        if (color === '#ffcc00' || color === '#d9a441' || color === '#ffe566') {
-            piece.style.boxShadow = '0 0 3px rgba(255, 200, 80, 0.4)';
-        }
-        return piece;
-    }
-
-    var PAPER_COLORS = [
-        '#ff4d6d', '#ff2d55', '#ff8fab', '#ff9500', '#ffd60a',
-        '#ffe566', '#ffcc00', '#d9a441', '#30d158', '#80ffdb',
-        '#0a84ff', '#4cc9f0', '#af52de', '#c77dff'
-    ];
-
-    /* --- HOME: continuous ambient layer (only while home in view) --- */
-    function initHomeConfetti() {
-        if (confettiReduced) return;
-        var home = document.getElementById('home');
-        if (!home) return;
-
-        var layer = document.createElement('div');
-        layer.className = 'home-confetti-layer';
-        layer.setAttribute('aria-hidden', 'true');
-        home.appendChild(layer);
-
-        var count = confettiMobile ? 90 : 160;
-        for (var i = 0; i < count; i++) {
-            var piece = makeTinyPiece(PAPER_COLORS);
-            piece.classList.add('home-float-piece');
+        function makePaper(container, className) {
+            const piece = document.createElement('span');
+            piece.className = 'diwali-paper-piece ' + (className || '');
+            const color = paperColors[Math.floor(Math.random() * paperColors.length)];
+            const width = 2 + Math.random() * 2;
+            const height = 3 + Math.random() * 3;
             piece.style.left = (Math.random() * 100) + '%';
             piece.style.top = (Math.random() * 100) + '%';
-            piece.style.animationDelay = (Math.random() * 8) + 's';
-            piece.style.animationDuration = (6 + Math.random() * 10) + 's';
-            piece.style.opacity = String(0.35 + Math.random() * 0.5);
-            layer.appendChild(piece);
+            piece.style.width = width + 'px';
+            piece.style.height = height + 'px';
+            piece.style.background = color;
+            piece.style.animationDelay = (-Math.random() * 12) + 's';
+            piece.style.animationDuration = (5 + Math.random() * 9) + 's';
+            piece.style.setProperty('--paper-drift', (Math.random() * 120 - 60) + 'px');
+            piece.style.setProperty('--paper-spin', (Math.random() * 900 - 450) + 'deg');
+            container.appendChild(piece);
+            return piece;
         }
 
-        // Pause when home not visible (performance)
-        if ('IntersectionObserver' in window) {
-            var obs = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    layer.style.display = entry.isIntersecting ? '' : 'none';
-                });
-            }, { threshold: 0.05 });
-            obs.observe(home);
-        }
-    }
-
-    /* --- SURPRISE: large burst on button only --- */
-    function burstDiwaliConfettiAt(clientX, clientY, options) {
-        options = options || {};
-        if (confettiReduced) return;
-
-        var count = options.count || (confettiMobile ? 70 : 110);
-        if (typeof clientX !== 'number') clientX = window.innerWidth / 2;
-        if (typeof clientY !== 'number') clientY = window.innerHeight * 0.3;
-
-        var layer = document.createElement('div');
-        layer.className = 'diwali-confetti-layer';
-        layer.setAttribute('aria-hidden', 'true');
-        document.body.appendChild(layer);
-
-        for (var i = 0; i < count; i++) {
-            var piece = makeTinyPiece(PAPER_COLORS);
-            piece.style.position = 'fixed';
-            piece.style.left = clientX + 'px';
-            piece.style.top = clientY + 'px';
-            piece.style.margin = '0';
-
-            var upward = !!options.upward;
-            // Prefer upper hemisphere when upward bloom is requested
-            var angle;
-            if (upward) {
-                // -PI to 0 roughly = upward half, with spread
-                angle = -Math.PI + (Math.PI * (i / count)) + (Math.random() * 0.4 - 0.2);
-            } else {
-                angle = (Math.PI * 2 * i) / count + Math.random() * 0.5;
+        function addAmbientPapers(section, className, count) {
+            if (!section || reducedMotion || section.querySelector('.' + className)) return;
+            const layer = document.createElement('div');
+            layer.className = className;
+            layer.setAttribute('aria-hidden', 'true');
+            section.appendChild(layer);
+            for (let i = 0; i < count; i++) makePaper(layer, 'ambient-paper');
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => { layer.style.visibility = entry.isIntersecting ? 'visible' : 'hidden'; });
+                }, { threshold: 0.01 });
+                observer.observe(section);
             }
-            var dist = (upward ? 50 : 30) + Math.random() * (upward ? 180 : 140);
-            var bx = Math.cos(angle) * dist * (upward ? 1.15 : 1);
-            // Negative Y is up in CSS transforms
-            var by = upward
-                ? (-Math.abs(Math.sin(angle)) * dist - 40 - Math.random() * 120)
-                : (Math.sin(angle) * dist * 0.45 - 20 - Math.random() * 50);
-            piece.style.setProperty('--burst-x', bx.toFixed(0) + 'px');
-            piece.style.setProperty('--burst-y', by.toFixed(0) + 'px');
-            piece.style.setProperty('--drift-x', (bx * 0.55 + Math.random() * 80 - 40).toFixed(0) + 'px');
-            piece.style.setProperty('--spin', (200 + Math.random() * 600).toFixed(0) + 'deg');
-            piece.style.animationName = upward ? 'diwaliConfettiBloom' : 'diwaliConfettiFall';
-            piece.style.animationTimingFunction = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
-            piece.style.animationFillMode = 'forwards';
-            piece.style.animationDelay = (Math.random() * 0.2) + 's';
-            piece.style.animationDuration = (upward ? 3.2 : 2.8) + Math.random() * 1.8 + 's';
-            layer.appendChild(piece);
         }
 
-        setTimeout(function () {
-            if (layer && layer.parentNode) layer.parentNode.removeChild(layer);
-        }, 5200);
-    }
+        // 1) Continuous colourful papers on the Home hero.
+        const home = document.getElementById('home') || document.querySelector('.hero-section');
+        addAmbientPapers(home, 'home-confetti-layer', mobile ? 75 : 145);
 
-    function launchDiwaliConfettiBurst() {
-        if (confettiReduced) return;
-
-        var layer = document.createElement('div');
-        layer.className = 'diwali-confetti-layer';
-        layer.setAttribute('aria-hidden', 'true');
-        document.body.appendChild(layer);
-
-        // At least 2000 on desktop; still dense on mobile
-        var total = confettiMobile ? 900 : 2000;
-        var accentEmojis = ['✦', '✧', '★', '🌸', '🌺', '🌼', '💛', '✨'];
-
-        for (var i = 0; i < total; i++) {
-            var piece = document.createElement('div');
-            var roll = Math.random();
-            var color = PAPER_COLORS[Math.floor(Math.random() * PAPER_COLORS.length)];
-
-            if (roll < 0.07) {
-                // sparse accents like stars / tiny flowers
-                piece.className = 'diwali-confetti-piece is-sparkle-emoji';
-                piece.textContent = accentEmojis[Math.floor(Math.random() * accentEmojis.length)];
-                piece.style.fontSize = (5 + Math.random() * 7) + 'px';
-                piece.style.color = color;
-                piece.style.background = 'none';
-            } else if (roll < 0.35) {
-                // tiny dots
-                piece.className = 'diwali-confetti-piece is-paper';
-                var d = 2 + Math.random() * 3;
-                piece.style.width = d + 'px';
-                piece.style.height = d + 'px';
-                piece.style.borderRadius = '50%';
-                piece.style.background = color;
-            } else {
-                // tiny paper strips / squares
-                piece.className = 'diwali-confetti-piece is-paper';
-                var w = 2 + Math.random() * 4;
-                var h = 3 + Math.random() * 5;
-                piece.style.width = w + 'px';
-                piece.style.height = h + 'px';
-                piece.style.borderRadius = Math.random() > 0.5 ? '1px' : '0';
-                piece.style.background = color;
+        // 2) Confetti burst when the Surprise button is clicked.
+        function launchSurprisePaperBurst() {
+            if (reducedMotion) return;
+            const layer = document.createElement('div');
+            layer.className = 'diwali-confetti-layer surprise-paper-burst';
+            layer.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(layer);
+            const total = mobile ? 130 : 220;
+            for (let i = 0; i < total; i++) {
+                const p = makePaper(layer, 'burst-paper');
+                p.style.left = (Math.random() * 100) + 'vw';
+                p.style.top = (-10 - Math.random() * 35) + 'px';
+                p.style.animationDelay = (Math.random() * 1.1) + 's';
+                p.style.animationDuration = (2.8 + Math.random() * 2.5) + 's';
+                p.style.setProperty('--paper-fall', (window.innerHeight + 100 + Math.random() * 250) + 'px');
             }
-
-            // Start from TOP of viewport, spread across full width
-            var startX = Math.random() * window.innerWidth;
-            var startY = -20 - Math.random() * 120;
-            piece.style.position = 'fixed';
-            piece.style.left = startX + 'px';
-            piece.style.top = startY + 'px';
-            piece.style.margin = '0';
-            piece.style.opacity = '0';
-
-            // Fall downward with slight horizontal drift
-            var driftX = (Math.random() * 120 - 60).toFixed(0) + 'px';
-            var fallY = (window.innerHeight + 80 + Math.random() * 200).toFixed(0) + 'px';
-            var spin = (180 + Math.random() * 700).toFixed(0) + 'deg';
-            piece.style.setProperty('--drift-x', driftX);
-            piece.style.setProperty('--fall-y', fallY);
-            piece.style.setProperty('--spin', spin);
-
-            piece.style.animationName = 'diwaliConfettiRain';
-            piece.style.animationTimingFunction = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
-            piece.style.animationFillMode = 'forwards';
-            // Stagger so it looks like continuous rain from above
-            piece.style.animationDelay = (Math.random() * 1.4) + 's';
-            piece.style.animationDuration = (2.8 + Math.random() * 2.6) + 's';
-
-            layer.appendChild(piece);
+            window.setTimeout(() => layer.remove(), 6500);
+        }
+        if (surpriseButton) {
+            surpriseButton.addEventListener('click', launchSurprisePaperBurst, { once: false });
         }
 
-        // Cleanup after all have fallen
-        setTimeout(function () {
-            if (layer && layer.parentNode) layer.parentNode.removeChild(layer);
-        }, 6500);
-    }
-
-
-    /* --- FINAL PHOTO: ambient when section visible --- */
-    function initPersonalConfetti() {
-        if (confettiReduced) return;
-        var section = document.getElementById('personal-greeting') ||
-            document.querySelector('.personal-diwali-section');
-        if (!section) return;
-
-        var layer = document.createElement('div');
-        layer.className = 'personal-confetti-layer';
-        layer.setAttribute('aria-hidden', 'true');
-        section.style.position = section.style.position || 'relative';
-        section.appendChild(layer);
-
-        var count = confettiMobile ? 55 : 100;
-        for (var i = 0; i < count; i++) {
-            var piece = makeTinyPiece(PAPER_COLORS);
-            piece.classList.add('home-float-piece');
-            piece.style.left = (Math.random() * 100) + '%';
-            piece.style.top = (Math.random() * 100) + '%';
-            piece.style.animationDelay = (Math.random() * 7) + 's';
-            piece.style.animationDuration = (7 + Math.random() * 9) + 's';
-            piece.style.opacity = String(0.3 + Math.random() * 0.45);
-            layer.appendChild(piece);
-        }
-
-        layer.style.display = 'none';
-        if ('IntersectionObserver' in window) {
-            var obs = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    layer.style.display = entry.isIntersecting ? '' : 'none';
-                });
-            }, { threshold: 0.15 });
-            obs.observe(section);
-        } else {
-            layer.style.display = '';
-        }
-    }
-
-    // Init ambient layers on load
-    initHomeConfetti();
-    initPersonalConfetti();
-
-
-    
-
-    /* ---------- Video controls: hide download / PiP where supported ---------- */
-    (function protectStoryVideo() {
-        var v = document.getElementById('openingCinematicVideo');
-        if (!v) return;
-        v.setAttribute('controlsList', 'nodownload noremoteplayback');
-        v.setAttribute('disablePictureInPicture', '');
-        try { v.disablePictureInPicture = true; } catch (e) {}
-        // Discourage right-click save on the player (does not stop determined users)
-        v.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-        });
+        // 3) Ambient paper decorations around the final personal photo.
+        const finalPhoto = document.getElementById('personal-greeting');
+        addAmbientPapers(finalPhoto, 'personal-confetti-layer', mobile ? 55 : 100);
     })();
-
-    
-    /* Watch in new tab — lightweight player without download control */
-    (function () {
-        var link = document.querySelector('.watch-new-tab');
-        if (!link) return;
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            var src = link.getAttribute('href') || 'Assets/videos/scenes/diwali-rama-story-40sec.mp4';
-            var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">' +
-                '<title>Diwali Story</title><style>html,body{margin:0;height:100%;background:#0a0604;display:flex;align-items:center;justify-content:center}' +
-                'video{max-width:100%;max-height:100%;width:100%;outline:none}</style></head><body>' +
-                '<video controls autoplay playsinline controlslist="nodownload noplaybackrate" disablepictureinpicture disableremoteplayback ' +
-                'src="' + src.replace(/"/g, '') + '"></video></body></html>';
-            var w = window.open('', '_blank');
-            if (w) {
-                w.document.write(html);
-                w.document.close();
-                w.onload = function () {
-                    var v = w.document.querySelector('video');
-                    if (v) { v.playbackRate = 0.75; v.defaultPlaybackRate = 0.75; }
-                };
-            } else {
-                // popup blocked — fall back to direct file
-                window.open(src, '_blank');
-            }
-        });
-    })();
-
-    
-    /* =========================================================
-       FRONTEND ↔ BACKEND CONNECTION
-       Uses FastAPI on same origin (port 8000) or localhost:8000
-    ========================================================= */
-
-    function getApiBase() {
-        var origin = window.location.origin || '';
-        // When site is served by FastAPI (port 8000), same origin
-        if (origin.indexOf(':8000') !== -1) return origin;
-        // Live Server / static preview → talk to backend
-        if (origin.indexOf(':5500') !== -1 || origin.indexOf('127.0.0.1') !== -1 || origin.indexOf('localhost') !== -1) {
-            return 'http://127.0.0.1:8000';
-        }
-        return origin || 'http://127.0.0.1:8000';
-    }
-
-    var API_BASE = getApiBase();
-
-    function apiGet(path) {
-        return fetch(API_BASE + path, {
-            method: 'GET',
-            headers: { 'Accept': 'application/json' }
-        }).then(function (res) {
-            if (!res.ok) throw new Error('API ' + path + ' → ' + res.status);
-            return res.json();
-        });
-    }
-
-    function setBackendStatus(ok, detail) {
-        var el = document.getElementById('backendStatus');
-        if (!el) return;
-        el.textContent = ok ? 'Connected' : 'Offline';
-        el.className = 'backend-status ' + (ok ? 'is-online' : 'is-offline');
-        if (detail) el.title = detail;
-    }
-
-    function escapeHtml(str) {
-        return String(str == null ? '' : str)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;');
-    }
-
-    /** Map API chapter/scenes into Journey panel if present */
-    function renderJourneyFromApi(chapters) {
-        if (!chapters || !chapters.length) return false;
-
-        var strip = document.querySelector('#journeyPanel .scene-strip');
-        if (!strip) return false;
-
-        // Prefer a chapter that looks like the Rama / origin story
-        var chapter = null;
-        for (var i = 0; i < chapters.length; i++) {
-            var c = chapters[i];
-            var id = String(c.id || c.chapter_id || '').toLowerCase();
-            var title = String(c.title || c.name || '').toLowerCase();
-            if (id.indexOf('rama') !== -1 || id.indexOf('journey') !== -1 ||
-                title.indexOf('rama') !== -1 || title.indexOf('return') !== -1 ||
-                title.indexOf('ayodhya') !== -1) {
-                chapter = c;
-                break;
-            }
-        }
-        if (!chapter) chapter = chapters[0];
-
-        var scenes = chapter.scenes || chapter.scene_list || [];
-        if (!scenes.length && chapter.sections) scenes = chapter.sections;
-        if (!scenes.length) return false;
-
-        var html = '';
-        scenes.forEach(function (scene, index) {
-            var num = String(index + 1).padStart(2, '0');
-            var sTitle = scene.title || scene.name || ('Scene ' + num);
-            var sText = scene.description || scene.summary || scene.text || scene.narration || '';
-            var sImg = scene.image || scene.image_url || scene.thumbnail || '';
-            // Keep a sensible fallback image from existing design
-            if (!sImg) {
-                var fallbacks = [
-                    'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&w=600&q=80',
-                    'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80',
-                    'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=600&q=80',
-                    'https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=600',
-                    'https://images.pexels.com/photos/18849427/pexels-photo-18849427.jpeg?auto=compress&cs=tinysrgb&w=600'
-                ];
-                sImg = fallbacks[index % fallbacks.length];
-            }
-
-            html += '<article class="scene-card" role="listitem">' +
-                '<img src="' + escapeHtml(sImg) + '" alt="' + escapeHtml(sTitle) + '" loading="lazy">' +
-                '<div class="scene-card-body">' +
-                '<span class="scene-number">' + escapeHtml(num) + '</span>' +
-                '<h3>' + escapeHtml(sTitle) + '</h3>' +
-                '<p>' + escapeHtml(sText) + '</p>' +
-                '</div></article>';
-        });
-
-        strip.innerHTML = html;
-
-        // Optional: update journey summary from chapter
-        var summaryTitle = document.querySelector('#journey .chapter-summary h2');
-        var summaryText = document.querySelector('#journey .chapter-summary p');
-        if (summaryTitle && (chapter.title || chapter.name)) {
-            summaryTitle.textContent = chapter.title || chapter.name;
-        }
-        if (summaryText && (chapter.summary || chapter.description || chapter.intro)) {
-            summaryText.textContent = chapter.summary || chapter.description || chapter.intro;
-        }
-
-        console.log('🪔 Journey updated from API:', chapter.id || chapter.chapter_id || chapter.title);
-        return true;
-    }
-
-    function connectBackend() {
-        apiGet('/api/health')
-            .then(function (health) {
-                setBackendStatus(true, JSON.stringify(health));
-                console.log('🪔 Backend health:', health);
-                return apiGet('/api/history');
-            })
-            .then(function (data) {
-                var chapters = data.chapters || data.data || data.results || [];
-                if (!Array.isArray(chapters) && data.chapter) chapters = [data.chapter];
-                var ok = renderJourneyFromApi(chapters);
-                if (!ok) {
-                    console.log('🪔 API history loaded but no scenes mapped — keeping static Journey content.');
-                }
-                // Expose for debugging
-                window.DiwaliAPI = {
-                    base: API_BASE,
-                    history: data,
-                    reload: connectBackend
-                };
-            })
-            .catch(function (err) {
-                setBackendStatus(false, String(err && err.message ? err.message : err));
-                console.warn('🪔 Backend offline or unreachable at', API_BASE, err);
-                // Site keeps working with static HTML content
-            });
-    }
-
-    // Connect after DOM is ready (script is at end of body)
-    connectBackend();
-
 
     console.log('🪔 Diwali cinematic experience loaded.');
+
 })();
+
+
+/* ASK ABOUT DIWALI — exclusive view mode */
+(function () {
+  'use strict';
+  function initAskDiwaliExclusiveView() {
+    const section = document.getElementById('ask-diwali');
+    const nav = document.getElementById('mainNav');
+    const askLink = nav && nav.querySelector('a[href="#ask-diwali"]');
+    if (!section || !askLink) return;
+
+    const form = document.getElementById('diwaliQuestionForm');
+    const input = document.getElementById('diwaliQuestion');
+    const answer = document.getElementById('diwaliAnswer');
+    const answerTitle = document.getElementById('diwaliAnswerTitle');
+    const answerText = document.getElementById('diwaliAnswerText');
+    const historicalNote = document.getElementById('diwaliHistoricalNote');
+    const status = document.getElementById('diwaliQuestionStatus');
+    const results = document.getElementById('diwaliSearchResults');
+
+    const knowledge = [
+      { title: 'What is Diwali?', keys: ['what is diwali', 'meaning of diwali', 'deepavali', 'festival of lights'], text: 'Diwali, also called Deepavali, is a major Indian festival often known as the Festival of Lights. Families light lamps, decorate their homes, share sweets, gather with loved ones, and mark the victory of light over darkness and good over evil. Celebrations vary by region and community.', note: 'Diwali is celebrated over several days. Dates and customs vary by regional calendar and tradition.' },
+      { title: 'Rama and the return to Ayodhya', keys: ['rama', 'ramayana', 'ayodhya', 'return', 'lord ram'], text: 'In a widely told North Indian tradition, Diwali commemorates Rama, Sita, and Lakshmana returning to Ayodhya after Rama’s 14-year exile and the defeat of Ravana. The people are said to have welcomed them by lighting rows of oil lamps. This is one of several stories associated with Diwali.', note: 'Diwali has different religious and historical associations across India; the Rama story is especially prominent in many Hindu traditions.' },
+      { title: 'Diwali traditions', keys: ['tradition', 'custom', 'rangoli', 'diyas', 'lamps', 'sweets', 'fireworks'], text: 'Common traditions include cleaning and decorating homes, drawing rangoli, lighting diyas, exchanging sweets and gifts, wearing festive clothes, visiting family, and offering prayers. Practices vary across regions and families.', note: 'Some communities choose quieter or more environmentally considerate celebrations.' },
+      { title: 'Lakshmi Puja', keys: ['lakshmi', 'puja', 'prayer', 'worship', 'prosperity'], text: 'Lakshmi Puja is an important Diwali observance for many Hindu families. People pray to Goddess Lakshmi, associated with prosperity and good fortune, and often also worship Ganesha. Homes and prayer spaces may be cleaned and decorated, and lamps are lit.', note: 'The timing and exact rituals depend on local customs and family tradition.' },
+      { title: 'Why are lamps lit?', keys: ['lamp', 'light', 'diyas', 'darkness', 'why lights'], text: 'Lamps are a central symbol of Diwali. They can represent hope, knowledge, welcome, and the triumph of light over darkness. In the Rama tradition, lamps also welcome Rama and Sita home to Ayodhya.', note: 'The meaning of lamps can vary with the story and community being celebrated.' }
+    ];
+
+    function closeAsk() {
+      section.hidden = true;
+      section.classList.remove('is-active');
+      document.body.classList.remove('ask-diwali-mode');
+      askLink.setAttribute('aria-expanded', 'false');
+    }
+
+    function openAsk(event) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      section.hidden = false;
+      section.classList.add('is-active');
+      document.body.classList.add('ask-diwali-mode');
+      askLink.setAttribute('aria-expanded', 'true');
+      if (nav) nav.classList.remove('open');
+      const toggle = document.getElementById('navToggle');
+      if (toggle) {
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.setTimeout(() => { if (input) input.focus({ preventScroll: true }); }, 350);
+    }
+
+    askLink.addEventListener('click', openAsk, true);
+    nav.querySelectorAll('a[href^="#"]:not([href="#ask-diwali"])').forEach(link => {
+      link.addEventListener('click', closeAsk, true);
+    });
+    const brand = document.querySelector('.brand[href="#home"]');
+    if (brand) brand.addEventListener('click', closeAsk, true);
+
+    function renderAnswer(question) {
+      const q = question.toLowerCase().trim();
+      let matches = knowledge.filter(item => item.keys.some(key => q.includes(key) || key.includes(q)));
+      if (!matches.length) matches = knowledge.filter(item => item.title.toLowerCase().includes(q) || item.text.toLowerCase().includes(q));
+      if (!matches.length) {
+        if (status) status.textContent = 'Try a suggested question about Diwali, Rama and Ayodhya, traditions, or Lakshmi Puja.';
+        if (answer) answer.hidden = false;
+        if (answerTitle) answerTitle.textContent = 'Try a related question';
+        if (answerText) answerText.textContent = 'Choose one of the suggested questions or try a shorter phrase.';
+        if (historicalNote) { historicalNote.hidden = true; historicalNote.textContent = ''; }
+        if (results) results.replaceChildren();
+        return;
+      }
+      const first = matches[0];
+      if (answer) answer.hidden = false;
+      if (answerTitle) answerTitle.textContent = first.title;
+      if (answerText) answerText.textContent = first.text;
+      if (historicalNote) { historicalNote.hidden = !first.note; historicalNote.textContent = first.note; }
+      if (status) status.textContent = 'Answer ready.';
+      if (results) {
+        results.replaceChildren();
+        matches.slice(1).forEach(item => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'diwali-related-result';
+          button.textContent = item.title;
+          button.addEventListener('click', () => { if (input) input.value = item.title; renderAnswer(item.title); });
+          results.appendChild(button);
+        });
+      }
+    }
+
+    if (form) form.addEventListener('submit', event => {
+      event.preventDefault();
+      const question = input ? input.value.trim() : '';
+      if (!question) { if (status) status.textContent = 'Please enter a question about Diwali.'; return; }
+      renderAnswer(question);
+    });
+    section.querySelectorAll('[data-question]').forEach(button => {
+      button.addEventListener('click', () => {
+        const question = button.getAttribute('data-question') || button.textContent.trim();
+        if (input) input.value = question;
+        renderAnswer(question);
+      });
+    });
+    closeAsk();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAskDiwaliExclusiveView, { once: true });
+  else initAskDiwaliExclusiveView();
+})();
+

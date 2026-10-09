@@ -45,6 +45,7 @@
                 <a href="#journey">Journey</a>
                 <a href="#traditions">Traditions</a>
                 <a href="#today">Today</a>
+                <a href="#ask-diwali" aria-controls="ask-diwali" aria-expanded="false">Ask About Diwali</a>
             </nav>
             <div class="nav-actions">
                 <span id="backendStatus" class="backend-status is-offline" title="Backend status">…</span>
@@ -547,6 +548,514 @@
                 >
             </div>
         </section>
+
+    
+
+        <section id="ask-diwali" class="ask-diwali-section" aria-labelledby="askDiwaliTitle" hidden>
+
+
+
+
+
+
+
+    <div class="ask-diwali-container">
+
+
+
+
+
+
+
+        <span class="section-kicker">Explore the Stories</span>
+
+
+
+
+
+
+
+        <h2 id="askDiwaliTitle">Ask About Diwali</h2>
+
+
+
+
+
+
+
+        <p class="ask-diwali-intro">
+
+
+
+
+
+
+
+            Have a question about Diwali's history, stories, or traditions?
+
+
+
+
+
+
+
+            Search the Diwali history collection to discover related chapters.
+
+
+
+
+
+
+
+        </p>
+
+
+
+
+
+
+
+        <form id="diwaliQuestionForm" class="diwali-question-form">
+
+
+
+
+
+
+
+            <label for="diwaliQuestion" class="visually-hidden">
+
+
+
+
+
+
+
+                Enter your question about Diwali
+
+
+
+
+
+
+
+            </label>
+
+
+
+
+
+
+
+            <input
+
+
+
+
+
+
+
+                type="search"
+
+
+
+
+
+
+
+                id="diwaliQuestion"
+
+
+
+
+
+
+
+                name="question"
+
+
+
+
+
+
+
+                placeholder="Ask something about Diwali..."
+
+
+
+
+
+
+
+                autocomplete="off"
+
+
+
+
+
+
+
+                required
+
+
+
+
+
+
+
+            >
+
+
+
+
+
+
+
+            <button type="submit" id="diwaliAskButton">
+
+
+
+
+
+
+
+                Ask Question <span aria-hidden="true">→</span>
+
+
+
+
+
+
+
+            </button>
+
+
+
+
+
+
+
+        </form>
+
+
+
+
+
+
+
+        <div class="diwali-question-suggestions">
+
+
+
+
+
+
+
+            <p>Not sure what to ask? Try one of these:</p>
+
+
+
+
+
+
+
+            <button type="button" data-question="What is Diwali?">
+
+
+
+
+
+
+
+                What is Diwali?
+
+
+
+
+
+
+
+            </button>
+
+
+
+
+
+
+
+            <button
+
+
+
+
+
+
+
+                type="button"
+
+
+
+
+
+
+
+                data-question="Rama and the return to Ayodhya"
+
+
+
+
+
+
+
+            >
+
+
+
+
+
+
+
+                Rama's story
+
+
+
+
+
+
+
+            </button>
+
+
+
+
+
+
+
+            <button type="button" data-question="Diwali traditions">
+
+
+
+
+
+
+
+                Diwali traditions
+
+
+
+
+
+
+
+            </button>
+
+
+
+
+
+
+
+            <button type="button" data-question="Lakshmi Puja">
+
+
+
+
+
+
+
+                Lakshmi Puja
+
+
+
+
+
+
+
+            </button>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <p
+
+
+
+
+
+
+
+            id="diwaliQuestionStatus"
+
+
+
+
+
+
+
+            class="diwali-question-status"
+
+
+
+
+
+
+
+            role="status"
+
+
+
+
+
+
+
+            aria-live="polite"
+
+
+
+
+
+
+
+        ></p>
+
+
+
+
+
+
+
+        <div id="diwaliAnswer" class="diwali-answer" hidden>
+
+
+
+
+
+
+
+            <span class="section-kicker">From the History Collection</span>
+
+
+
+
+
+
+
+            <h3 id="diwaliAnswerTitle"></h3>
+
+
+
+
+
+
+
+            <p id="diwaliAnswerText"></p>
+
+
+
+
+
+
+
+            <p
+
+
+
+
+
+
+
+                id="diwaliHistoricalNote"
+
+
+
+
+
+
+
+                class="diwali-historical-note"
+
+
+
+
+
+
+
+                hidden
+
+
+
+
+
+
+
+            ></p>
+
+
+
+
+
+
+
+            <div
+
+
+
+
+
+
+
+                id="diwaliSearchResults"
+
+
+
+
+
+
+
+                class="diwali-search-results"
+
+
+
+
+
+
+
+            ></div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</section>
 
     </main>
 

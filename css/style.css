@@ -2621,3 +2621,464 @@ button:focus-visible {
     color: #C9BDA9;
     opacity: 0.7;
 }
+
+/* ===== Ask About Diwali styles restored from the updated project ===== */
+/* =========================================
+   ASK ABOUT DIWALI — HIDDEN UNTIL CLICKED
+========================================= */
+
+#ask-diwali[hidden] {
+    display: none !important;
+}
+
+#ask-diwali:not([hidden]) {
+    display: block;
+    min-height: 60vh;
+    padding: 8rem 1.25rem 3rem;
+    scroll-margin-top: 5rem;
+}
+
+.ask-diwali-container {
+    width: min(850px, 100%);
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid rgba(217, 164, 65, 0.4);
+    border-radius: 24px;
+    background: linear-gradient(
+        135deg,
+        rgba(18, 12, 8, 0.92),
+        rgba(8, 8, 12, 0.92)
+    );
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+}
+
+#ask-diwali h2 {
+    color: #FFF4DD;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+#ask-diwali p {
+    color: #E8DCC8;
+}
+
+#diwaliQuestionForm {
+    display: flex;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+#diwaliQuestion {
+    flex: 1;
+    min-width: 0;
+    padding: 0.9rem 1rem;
+    color: #FFF4DD;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(217, 164, 65, 0.45);
+    border-radius: 12px;
+    font: inherit;
+}
+
+#diwaliQuestion:focus {
+    outline: 2px solid #FFD76A;
+    outline-offset: 2px;
+}
+
+#diwaliAskButton,
+#ask-diwali [data-question] {
+    padding: 0.8rem 1.1rem;
+    border-radius: 10px;
+    font: inherit;
+    cursor: pointer;
+}
+
+#diwaliAskButton {
+    color: #1a1208;
+    font-weight: 700;
+    background: linear-gradient(135deg, #FFD76A, #D9A441);
+}
+
+#ask-diwali [data-question] {
+    margin: 0.3rem;
+    color: #FFD76A;
+    border: 1px solid rgba(217, 164, 65, 0.4);
+    background: rgba(217, 164, 65, 0.08);
+}
+
+#ask-diwali [data-question]:hover {
+    background: rgba(217, 164, 65, 0.2);
+}
+
+#diwaliQuestionStatus {
+    margin-top: 1rem;
+}
+
+#diwaliAnswer {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(217, 164, 65, 0.3);
+    border-radius: 14px;
+    background: rgba(217, 164, 65, 0.06);
+}
+
+#diwaliAnswer[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    #ask-diwali:not([hidden]) {
+        padding: 7rem 1rem 2rem;
+    }
+
+    .ask-diwali-container {
+        padding: 1.25rem;
+    }
+
+    #diwaliQuestionForm {
+        flex-direction: column;
+    }
+
+    #diwaliAskButton {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   FINAL COMPATIBILITY FIXES
+   Keep this block at the very end of style.css.
+========================================================= */
+
+/* Respect HTML's hidden attribute even when component styles define display. */
+[hidden] {
+    display: none !important;
+}
+
+/* Keep anchor destinations visible below the fixed navigation. */
+#home,
+#surprise,
+#journey,
+#traditions,
+#today,
+#ask-diwali,
+#today-impact,
+#today-thoughtful {
+    scroll-margin-top: 92px;
+}
+
+/* Ask About Diwali section */
+#ask-diwali.ask-diwali-section:not([hidden]) {
+    display: block;
+}
+
+.ask-diwali-section {
+    color: var(--cream);
+}
+
+.ask-diwali-intro {
+    max-width: 680px;
+    margin: 0 auto 1.5rem;
+    color: var(--cream-muted);
+    text-align: center;
+}
+
+#diwaliQuestionForm {
+    display: flex;
+    align-items: stretch;
+    gap: 0.75rem;
+    width: 100%;
+    margin: 1.25rem auto;
+}
+
+#diwaliQuestion {
+    flex: 1 1 auto;
+    min-width: 0;
+    color: var(--cream);
+    background: rgba(8, 6, 4, 0.82);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    font: inherit;
+}
+
+#diwaliQuestion::placeholder {
+    color: var(--cream-soft);
+    opacity: 0.8;
+}
+
+#diwaliQuestion:focus-visible,
+#diwaliAskButton:focus-visible,
+#ask-diwali [data-question]:focus-visible {
+    outline: 2px solid var(--gold-soft);
+    outline-offset: 3px;
+}
+
+#diwaliAskButton {
+    flex: 0 0 auto;
+    padding: 0.85rem 1.2rem;
+    border-radius: 12px;
+    color: #1a1208;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+    font: inherit;
+    font-weight: 700;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#diwaliAskButton:hover:not(:disabled) {
+    transform: translateY(-1px);
+    filter: brightness(1.06);
+}
+
+#diwaliAskButton:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+#ask-diwali [data-question] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.25rem;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--cream-muted);
+    background: rgba(217, 164, 65, 0.08);
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+#ask-diwali [data-question]:hover {
+    color: var(--gold-soft);
+    border-color: var(--gold-soft);
+    background: rgba(217, 164, 65, 0.16);
+}
+
+#diwaliQuestionStatus {
+    min-height: 1.5em;
+    margin: 0.75rem 0;
+    color: var(--cream-muted);
+    text-align: center;
+}
+
+#diwaliAnswer {
+    margin-top: 1.25rem;
+    padding: clamp(1rem, 3vw, 1.75rem);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, rgba(18, 12, 8, 0.88), rgba(8, 8, 12, 0.82));
+    overflow-wrap: anywhere;
+}
+
+#diwaliAnswer[hidden] {
+    display: none !important;
+}
+
+#diwaliAnswerTitle {
+    margin: 0.4rem 0 0.75rem;
+    color: var(--cream);
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.25;
+}
+
+#diwaliAnswerText,
+#diwaliHistoricalNote {
+    color: var(--cream-muted);
+    line-height: 1.75;
+}
+
+#diwaliHistoricalNote {
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(217, 164, 65, 0.2);
+}
+
+#diwaliSearchResults {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+#diwaliSearchResults a {
+    display: block;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(217, 164, 65, 0.25);
+    border-radius: 12px;
+    background: rgba(217, 164, 65, 0.06);
+    color: var(--gold-soft);
+    overflow-wrap: anywhere;
+}
+
+#diwaliSearchResults a:hover {
+    border-color: var(--gold);
+    background: rgba(217, 164, 65, 0.12);
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+@media (max-width: 600px) {
+    #diwaliQuestionForm {
+        flex-direction: column;
+    }
+
+    #diwaliAskButton {
+        width: 100%;
+    }
+
+    #ask-diwali [data-question] {
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* Ask About Diwali is a dedicated view: show only that section until another nav item is chosen. */
+[hidden] { display: none !important; }
+body.ask-diwali-mode main > section:not(#ask-diwali),
+body.ask-diwali-mode .creator-credit { display: none !important; }
+body.ask-diwali-mode #ask-diwali {
+    display: block !important;
+    min-height: calc(100vh - 76px);
+    padding-top: 7rem;
+    padding-bottom: 3rem;
+    margin: 0 auto;
+}
+body.ask-diwali-mode #ask-diwali .ask-diwali-container {
+    width: min(900px, calc(100% - 2rem));
+    margin: 0 auto;
+}
+#ask-diwali { scroll-margin-top: 90px; }
+.home-confetti-layer, .personal-confetti-layer { pointer-events: none !important; }
+
+
+[hidden] { display: none !important; }
+
+
+/* =========================================================
+   FINAL FIX: confetti pieces generated by script.js
+   Matches .diwali-paper-piece (the actual JS-created element)
+========================================================= */
+.diwali-paper-piece {
+    position: absolute !important;
+    display: block !important;
+    pointer-events: none !important;
+    opacity: .95;
+    border-radius: 1px;
+    box-shadow: 0 0 5px rgba(255, 220, 120, .25);
+    will-change: transform, opacity;
+    animation-name: diwaliAmbientPaperDrift;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+.home-confetti-layer {
+    position: absolute !important;
+    inset: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    z-index: 5 !important;
+}
+.personal-confetti-layer {
+    position: absolute !important;
+    inset: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    z-index: 4 !important;
+    border-radius: inherit;
+}
+.hero-section, #personal-greeting { position: relative; }
+.hero-content { z-index: 6; }
+@keyframes diwaliAmbientPaperDrift {
+    0% { opacity: .15; transform: translate3d(0,-18px,0) rotate(0deg); }
+    15% { opacity: .95; }
+    50% { opacity: .8; transform: translate3d(var(--paper-drift, 20px), 45px,0) rotate(calc(var(--paper-spin, 240deg) * .45)); }
+    100% { opacity: .15; transform: translate3d(calc(var(--paper-drift, 20px) * -1), 105px,0) rotate(var(--paper-spin, 240deg)); }
+}
+.diwali-confetti-layer.surprise-paper-burst .diwali-paper-piece {
+    position: fixed !important;
+    top: -20px;
+    z-index: 99991 !important;
+    animation-name: diwaliBurstPaperFall !important;
+    animation-timing-function: cubic-bezier(.22,.61,.36,1) !important;
+    animation-iteration-count: 1 !important;
+    animation-fill-mode: forwards !important;
+}
+@keyframes diwaliBurstPaperFall {
+    0% { opacity: 0; transform: translate3d(0,-20px,0) rotate(0deg) scale(.5); }
+    8% { opacity: 1; }
+    100% { opacity: 0; transform: translate3d(var(--paper-drift, 30px), var(--paper-fall, 100vh),0) rotate(var(--paper-spin, 600deg)) scale(.75); }
+}
+/* Preserve the original mouse-following colour/emoji movement. */
+.hero-particles { z-index: 3; pointer-events: none; }
+.hero-particles span { display: inline-block; will-change: transform; transition: transform .12s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+    .diwali-paper-piece { animation: none !important; }
+}
+
+/* Fine confetti: smaller paper pieces while keeping the same density and motion. */
+.diwali-paper-piece {
+    box-shadow: 0 0 3px rgba(255, 220, 120, .18) !important;
+}
+
+
+/* Updated Diwali confetti: slightly larger pieces and a visible top-down surprise shower. */
+.diwali-paper-piece {
+    min-width: 2px;
+    min-height: 3px;
+}
+.diwali-confetti-layer.surprise-paper-burst {
+    position: fixed !important;
+    inset: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    z-index: 99991 !important;
+}
+.diwali-confetti-layer.surprise-paper-burst .diwali-paper-piece {
+    position: absolute !important;
+    top: 0;
+}
+
+
+/* Soft glowing dots that drift away like the supplied reference image. */
+.diwali-pointer-particle {
+    position: fixed !important;
+    z-index: 100000 !important;
+    border-radius: 50% !important;
+    background: var(--pointer-color, #ffd60a) !important;
+    box-shadow: 0 0 5px 1px var(--pointer-color, #ffd60a), 0 0 15px 3px color-mix(in srgb, var(--pointer-color, #ffd60a) 50%, transparent) !important;
+    pointer-events: none !important;
+    transform: translate(-50%, -50%) scale(.75);
+    opacity: 0;
+    animation: diwaliPointerTrail var(--particle-life, 1.4s) ease-out forwards;
+    will-change: transform, opacity;
+}
+.diwali-pointer-particle.is-burst {
+    animation-name: diwaliPointerBurst;
+    box-shadow: 0 0 7px 2px var(--pointer-color, #ffd60a), 0 0 18px 4px color-mix(in srgb, var(--pointer-color, #ffd60a) 50%, transparent) !important;
+}
+@keyframes diwaliPointerTrail {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(.35); }
+    18% { opacity: .95; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(calc(-50% + var(--pointer-x)), calc(-50% + var(--pointer-y))) scale(.45); }
+}
+@keyframes diwaliPointerBurst {
+    0% { opacity: 1; transform: translate(-50%, -50%) scale(.5); }
+    100% { opacity: 0; transform: translate(calc(-50% + var(--pointer-x)), calc(-50% + var(--pointer-y))) scale(.25); }
+}
+/* The reference is a trail of separate glowing orbs, not a solid rainbow line. */
+.diwali-rainbow-ray { display: none !important; }
