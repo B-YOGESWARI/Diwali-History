@@ -13,7 +13,6 @@
 </head>
 <body>
 
-    <!-- GLOBAL CINEMATIC SPACE BACKGROUND (entire site) -->
     <div class="site-background" aria-hidden="true">
         <video
             id="globalBackgroundVideo"
@@ -24,10 +23,7 @@
             playsinline
             preload="auto"
         >
-            <source
-                src="Assets/videos/background/Space BG.mp4"
-                type="video/mp4"
-            >
+            <source src="Assets/videos/background/Space BG.mp4" type="video/mp4">
         </video>
         <div class="global-bg-overlay"></div>
         <div class="ambient-stars" aria-hidden="true">
@@ -52,9 +48,7 @@
             </nav>
             <div class="nav-actions">
                 <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mainNav">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </button>
             </div>
         </div>
@@ -62,27 +56,14 @@
 
     <main>
 
-        <!-- HOME — content only; Space BG is global -->
         <section id="home" class="hero-section">
             <div class="hero-light-rays" aria-hidden="true"></div>
             <div class="hero-vignette" aria-hidden="true"></div>
-
             <div class="hero-particles" aria-hidden="true">
-                <span>✨</span>
-                <span>🪔</span>
-                <span>✨</span>
-                <span>🌸</span>
-                <span>🪔</span>
-                <span>🎆</span>
-                <span>✨</span>
-                <span>🌼</span>
-                <span>🪔</span>
-                <span>✨</span>
-                <span>🎇</span>
-                <span>🌸</span>
+                <span>✨</span><span>🪔</span><span>✨</span><span>🌸</span>
+                <span>🪔</span><span>🎆</span><span>✨</span><span>🌼</span>
+                <span>🪔</span><span>✨</span><span>🎇</span><span>🌸</span>
             </div>
-
-            <!-- 3D rotating Diwali diya -->
             <div class="hero-diya-3d" aria-hidden="true">
                 <div class="diya-scene">
                     <div class="diya-pivot">
@@ -101,13 +82,9 @@
                     </div>
                 </div>
             </div>
-
             <div class="hero-content cinematic-reveal">
                 <span class="hero-kicker">A Festival of Light</span>
-                <h1>
-                    Happy<br>
-                    <span class="title-shimmer">Diwali</span>
-                </h1>
+                <h1>Happy<br><span class="title-shimmer">Diwali</span></h1>
                 <p class="hero-subtitle">
                     A journey through stories, traditions, memories and
                     the light that continues to connect generations.
@@ -118,14 +95,12 @@
                     <span aria-hidden="true">🪔</span>
                 </a>
             </div>
-
             <div class="scroll-indicator" aria-hidden="true">
                 <span>Scroll to explore</span>
                 <div class="scroll-line"></div>
             </div>
         </section>
 
-        <!-- SURPRISE — Rama cinematic video unchanged -->
         <section id="surprise" class="surprise-section">
             <div class="surprise-background"></div>
             <div class="surprise-content">
@@ -160,49 +135,53 @@
                     <span class="paper paper-gold"></span>
                 </div>
 
-                <div id="cinematicVideoWrapper" class="cinematic-video-wrapper">
-                    <video
-                        id="openingCinematicVideo"
-                        class="opening-cinematic-video"
-                        playsinline
-                        preload="auto"
-                        controls
-                    >
-                        <source
-                            src="Assets/videos/scenes/diwali-rama-story-40sec.mp4"
-                            type="video/mp4"
+                <div id="cinematicVideoWrapper" class="cinematic-video-wrapper" hidden>
+                    <div class="video-frame">
+                        <video
+                            id="openingCinematicVideo"
+                            class="opening-cinematic-video"
+                            playsinline
+                            preload="metadata"
+                            controls
+                            controlslist="nodownload noplaybackrate"
+                            disablepictureinpicture
+                            disableremoteplayback
                         >
-                        Your browser does not support HTML5 video.
-                    </video>
-                    <div class="cinematic-corner cinematic-corner-top-left" aria-hidden="true">✨</div>
-                    <div class="cinematic-corner cinematic-corner-top-right" aria-hidden="true">🪔</div>
-                    <div class="cinematic-corner cinematic-corner-bottom-left" aria-hidden="true">🌸</div>
-                    <div class="cinematic-corner cinematic-corner-bottom-right" aria-hidden="true">✨</div>
+                            <source
+                                src="Assets/videos/scenes/diwali-rama-story-40sec.mp4"
+                                type="video/mp4"
+                            >
+                            Your browser does not support HTML5 video.
+                        </video>
+                        <div class="cinematic-corner cinematic-corner-top-left" aria-hidden="true">✨</div>
+                        <div class="cinematic-corner cinematic-corner-top-right" aria-hidden="true">🪔</div>
+                        <div class="cinematic-corner cinematic-corner-bottom-left" aria-hidden="true">🌸</div>
+                        <div class="cinematic-corner cinematic-corner-bottom-right" aria-hidden="true">✨</div>
+                    </div>
+                    <a
+                        class="watch-new-tab"
+                        href="Assets/videos/scenes/diwali-rama-story-40sec.mp4"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Watch Diwali Story in a New Tab ↗
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- JOURNEY — compact cinematic chapter -->
         <section id="journey" class="chapter-section journey-section">
             <article class="chapter-row cinematic-reveal" data-chapter="journey">
                 <button type="button" class="chapter-trigger" aria-expanded="false" aria-controls="journeyPanel">
                     <div class="chapter-visual">
-                        <img
-                            src="https://images.pexels.com/photos/18849427/pexels-photo-18849427.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                            alt="Rows of glowing Diwali lamps"
-                            loading="lazy"
-                            class="chapter-visual-img"
-                        >
+                        <img src="https://images.pexels.com/photos/18849427/pexels-photo-18849427.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Rows of glowing Diwali lamps" loading="lazy" class="chapter-visual-img">
                         <div class="chapter-visual-glow" aria-hidden="true"></div>
                     </div>
                     <div class="chapter-summary">
                         <span class="chapter-icon" aria-hidden="true">🪔</span>
                         <span class="section-kicker">The Journey</span>
                         <h2>A Story of Return &amp; Light</h2>
-                        <p>
-                            One widely observed tradition connects Diwali
-                            with Rama's return to Ayodhya after fourteen years of exile.
-                        </p>
+                        <p>One widely observed tradition connects Diwali with Rama's return to Ayodhya after fourteen years of exile.</p>
                         <span class="chapter-expand-hint">
                             <span class="hint-label">Explore scenes</span>
                             <span class="hint-arrow" aria-hidden="true">→</span>
@@ -259,27 +238,18 @@
             </article>
         </section>
 
-        <!-- TRADITIONS — compact cinematic chapter -->
         <section id="traditions" class="chapter-section traditions-section">
             <article class="chapter-row cinematic-reveal" data-chapter="traditions">
                 <button type="button" class="chapter-trigger" aria-expanded="false" aria-controls="traditionsPanel">
                     <div class="chapter-visual">
-                        <img
-                            src="https://images.pexels.com/photos/6103203/pexels-photo-6103203.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                            alt="Traditional diya lamp"
-                            loading="lazy"
-                            class="chapter-visual-img"
-                        >
+                        <img src="https://images.pexels.com/photos/6103203/pexels-photo-6103203.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Traditional diya lamp" loading="lazy" class="chapter-visual-img">
                         <div class="chapter-visual-glow" aria-hidden="true"></div>
                     </div>
                     <div class="chapter-summary">
                         <span class="chapter-icon" aria-hidden="true">🌸</span>
                         <span class="section-kicker">Traditions</span>
                         <h2>Many Traditions. One Celebration.</h2>
-                        <p>
-                            Across India and beyond, Diwali is celebrated with
-                            rituals, food and family customs that vary by region.
-                        </p>
+                        <p>Across India and beyond, Diwali is celebrated with rituals, food and family customs that vary by region.</p>
                         <span class="chapter-expand-hint">
                             <span class="hint-label">Explore traditions</span>
                             <span class="hint-arrow" aria-hidden="true">→</span>
@@ -328,227 +298,245 @@
             </article>
         </section>
 
-        <!-- TODAY — compact cinematic chapter -->
-        <section id="today" class="chapter-section today-section">
-            <article class="chapter-row cinematic-reveal" data-chapter="today">
-                <button type="button" class="chapter-trigger" aria-expanded="false" aria-controls="todayPanel">
-                    <div class="chapter-visual">
+        <!-- TODAY — immersive cinematic section -->
+        <section id="today" class="today-section-full">
+
+            <!-- Stage A: Hero -->
+            <div class="today-hero-block cinematic-reveal">
+                <div class="today-hero-inner">
+                    <div class="today-hero-visual">
                         <img
-                            src="https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                            alt="City glowing at night"
+                            src="https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                            alt="City glowing at night during Diwali"
                             loading="lazy"
-                            class="chapter-visual-img"
+                            class="today-hero-img"
                         >
-                        <div class="chapter-visual-glow" aria-hidden="true"></div>
-                        <div class="chapter-visual-particles" aria-hidden="true">
-                            <span>✨</span>
-                            <span>🎆</span>
-                            <span>🪔</span>
-                            <span>🌸</span>
+                        <div class="today-hero-visual-glow" aria-hidden="true"></div>
+                        <div class="today-hero-visual-particles" aria-hidden="true">
+                            <span>✨</span><span>🎆</span><span>🪔</span><span>🌸</span>
                         </div>
                     </div>
-                    <div class="chapter-summary">
-                        <span class="chapter-icon" aria-hidden="true">✨</span>
+                    <div class="today-hero-copy">
                         <span class="section-kicker">Diwali Today</span>
-                        <h2>The Celebration Continues</h2>
-                        <p>
-                            Modern Diwali can bring challenges for air, noise and waste —
-                            and thoughtful choices keep the joy kinder.
+                        <h2 class="today-hero-title">The Celebration Continues</h2>
+                        <div class="today-gold-line" aria-hidden="true"></div>
+                        <p class="today-hero-subtitle">
+                            Modern Diwali can still fill our homes with light, food and togetherness —
+                            while we stay considerate of the air we share, the people around us,
+                            animals who hear the noise, and the morning that follows the celebration.
                         </p>
-                        <span class="chapter-expand-hint">
-                            <span class="hint-label">Explore today</span>
-                            <span class="hint-arrow" aria-hidden="true">→</span>
-                        </span>
-                    </div>
-                </button>
-                <div id="todayPanel" class="chapter-panel" hidden>
-                    <div class="chapter-panel-inner">
-                        <div class="scene-strip" role="list">
-                            <article class="scene-card" role="listitem">
-                                <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=600&q=80" alt="Hazy city atmosphere" loading="lazy">
-                                <div class="scene-card-body">
-                                    <span class="tradition-icon" aria-hidden="true">🌫️</span>
-                                    <h3>Smoke &amp; Air</h3>
-                                    <p>Fireworks can raise fine particles; monitoring studies record festival-period spikes.</p>
-                                </div>
-                            </article>
-                            <article class="scene-card" role="listitem">
-                                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&q=80" alt="Protective mask" loading="lazy">
-                                <div class="scene-card-body">
-                                    <span class="tradition-icon" aria-hidden="true">❤️</span>
-                                    <h3>Health &amp; Noise</h3>
-                                    <p>Smoke and loud sounds can be hard on children, elders, animals and sensitive lungs.</p>
-                                </div>
-                            </article>
-                            <article class="scene-card" role="listitem">
-                                <img src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Waste on a street" loading="lazy">
-                                <div class="scene-card-body">
-                                    <span class="tradition-icon" aria-hidden="true">♻️</span>
-                                    <h3>What Remains</h3>
-                                    <p>Burnt paper and cracker waste can linger long after the celebration ends.</p>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="today-remedies-compact">
-                            <h3 class="remedies-title">We don't have to lose the joy</h3>
-                            <div class="remedies-chips">
-                                <span class="remedy-chip">🪔 Light more diyas</span>
-                                <span class="remedy-chip">🌸 Rangoli &amp; colours</span>
-                                <span class="remedy-chip">👨‍👩‍👧‍👦 Celebrate together</span>
-                                <span class="remedy-chip">♻️ Clean up together</span>
-                            </div>
-                            <p class="chapter-panel-note">Celebrate the joy. Protect the air. Keep the light alive.</p>
-                        </div>
-
-                        <!-- Thoughtful celebration -->
-                        <div class="thoughtful-celebration">
-                            <div class="thoughtful-intro">
-                                <span class="section-kicker">Small Choices, Brighter Diwali</span>
-                                <h3 class="thoughtful-heading">Celebrating with a Little More Thought</h3>
-                                <p>
-                                    Diwali has always been about bringing light into our lives.
-                                    Today, we can carry that idea a little further — by celebrating
-                                    in ways that are kinder to the people around us, to animals,
-                                    and to the environment.
-                                </p>
-                            </div>
-
-                            <div class="thoughtful-grid">
-                                <article class="thoughtful-card">
-                                    <span class="thoughtful-icon" aria-hidden="true">🪔</span>
-                                    <h4>Celebrate with Light</h4>
-                                    <p>
-                                        Diyas, candles and beautiful decorations are at the heart of Diwali.
-                                        Using them thoughtfully and safely can make the celebration just as
-                                        beautiful without creating unnecessary waste.
-                                    </p>
-                                </article>
-
-                                <article class="thoughtful-card">
-                                    <span class="thoughtful-icon" aria-hidden="true">🌿</span>
-                                    <h4>Let the Celebration Breathe</h4>
-                                    <p>
-                                        Fireworks are part of how many people celebrate, but keeping them
-                                        to a minimum can make the festival more comfortable for children,
-                                        older people, people who are unwell, and those who are sensitive to noise.
-                                    </p>
-                                </article>
-
-                                <article class="thoughtful-card">
-                                    <span class="thoughtful-icon" aria-hidden="true">🐾</span>
-                                    <h4>Remember Our Four-Legged Friends</h4>
-                                    <p>
-                                        The sounds of Diwali can be frightening for animals. Giving pets and
-                                        nearby animals a quiet, comfortable place during the celebrations is
-                                        a small thing that can make a big difference.
-                                    </p>
-                                </article>
-
-                                <article class="thoughtful-card">
-                                    <span class="thoughtful-icon" aria-hidden="true">♻️</span>
-                                    <h4>Leave Less Behind</h4>
-                                    <p>
-                                        Choose decorations that can be reused, avoid unnecessary plastic, and
-                                        take a little time to clean up after the celebrations. A beautiful
-                                        festival deserves a clean morning after it.
-                                    </p>
-                                </article>
-
-                                <article class="thoughtful-card">
-                                    <span class="thoughtful-icon" aria-hidden="true">🍱</span>
-                                    <h4>Share the Happiness</h4>
-                                    <p>
-                                        Diwali food is meant to be shared. Instead of preparing more than we need,
-                                        we can share sweets and meals with neighbors, friends, colleagues, or
-                                        someone who may be celebrating alone.
-                                    </p>
-                                </article>
-
-                                <article class="thoughtful-card">
-                                    <span class="thoughtful-icon" aria-hidden="true">❤️</span>
-                                    <h4>Make Room for Everyone</h4>
-                                    <p>
-                                        Not everyone celebrates Diwali in the same way. Being considerate of our
-                                        neighbors and including people around us can make the festival feel
-                                        warmer for everyone.
-                                    </p>
-                                </article>
-
-                                <article class="thoughtful-card">
-                                    <span class="thoughtful-icon" aria-hidden="true">👨‍👩‍👧</span>
-                                    <h4>Celebrate Safely</h4>
-                                    <p>
-                                        Keep diyas, candles and fireworks away from anything that can catch fire,
-                                        and make sure children are supervised. A little care helps everyone enjoy
-                                        the celebration without worry.
-                                    </p>
-                                </article>
-
-                                <article class="thoughtful-card">
-                                    <span class="thoughtful-icon" aria-hidden="true">🛍️</span>
-                                    <h4>Support Local Hands</h4>
-                                    <p>
-                                        Buying diyas, decorations and handmade products from local artisans can
-                                        add something special to the celebration while supporting the people who
-                                        keep these traditional crafts alive.
-                                    </p>
-                                </article>
-
-                                <article class="thoughtful-card">
-                                    <span class="thoughtful-icon" aria-hidden="true">💰</span>
-                                    <h4>Keep It Meaningful</h4>
-                                    <p>
-                                        Diwali doesn't have to be about spending more. Sometimes the simplest
-                                        celebrations — a home filled with diyas, good food and people we love —
-                                        become the memories we remember most.
-                                    </p>
-                                </article>
-                            </div>
-
-                            <div class="thoughtful-closing">
-                                <p>
-                                    Perhaps celebrating Diwali responsibly doesn't mean celebrating less.
-                                    It simply means celebrating with a little more awareness, a little more
-                                    kindness, and a little more thought for the world around us.
-                                </p>
-                                <p class="thoughtful-closing-emphasis">
-                                    Because the brightest Diwali is not only the one that lights up our homes —
-                                    it's the one that brings a little more light into someone else's life.
-                                </p>
-                            </div>
-                        </div>
+                        <a href="#today-impact" class="today-explore-btn">
+                            Explore Today
+                            <span aria-hidden="true">↓</span>
+                        </a>
                     </div>
                 </div>
-            </article>
+            </div>
+
+            <!-- Stage B: Understanding the impact -->
+            <div id="today-impact" class="today-stage today-impact-stage">
+                <div class="today-stage-header cinematic-reveal">
+                    <span class="section-kicker">Understanding the impact</span>
+                    <h3 class="today-stage-title">What the celebration can leave behind</h3>
+                    <p class="today-stage-lead">
+                        Joy does not have to come at the cost of the air, quiet nights, or a clean street the next day.
+                    </p>
+                </div>
+                <div class="today-impact-grid">
+                    <article class="today-impact-card cinematic-reveal">
+                        <div class="today-impact-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?auto=format&fit=crop&w=800&q=80" alt="Hazy city atmosphere" loading="lazy">
+                        </div>
+                        <div class="today-impact-body">
+                            <span class="today-card-icon" aria-hidden="true">🌫️</span>
+                            <h4>Smoke &amp; Air</h4>
+                            <p>Fireworks can raise fine particles; monitoring studies record festival-period spikes that make the air harder to breathe for a while.</p>
+                        </div>
+                    </article>
+                    <article class="today-impact-card cinematic-reveal">
+                        <div class="today-impact-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" alt="Protective mask" loading="lazy">
+                        </div>
+                        <div class="today-impact-body">
+                            <span class="today-card-icon" aria-hidden="true">❤️</span>
+                            <h4>Health &amp; Noise</h4>
+                            <p>Smoke and loud sounds can be hard on children, elders, animals and anyone with sensitive lungs or hearing.</p>
+                        </div>
+                    </article>
+                    <article class="today-impact-card cinematic-reveal">
+                        <div class="today-impact-img-wrap">
+                            <img src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Waste on a street" loading="lazy">
+                        </div>
+                        <div class="today-impact-body">
+                            <span class="today-card-icon" aria-hidden="true">♻️</span>
+                            <h4>What Remains</h4>
+                            <p>Burnt paper and cracker waste can linger long after the celebration ends — on streets, rooftops and in shared spaces.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Stage C: Celebrating thoughtfully -->
+            <div id="today-thoughtful" class="today-stage today-thoughtful-stage">
+                <div class="today-stage-header cinematic-reveal">
+                    <span class="section-kicker">Small Choices, Brighter Diwali</span>
+                    <h3 class="today-stage-title">Celebrating with a Little More Thought</h3>
+                    <p class="today-stage-lead">
+                        Diwali has always been about bringing light into our lives.
+                        Today, we can carry that idea a little further — by celebrating
+                        in ways that feel a bit kinder to the people around us, to animals,
+                        and to the world we share.
+                    </p>
+                </div>
+                <div class="today-thoughtful-grid today-thoughtful-grid-images">
+
+                    <article class="today-thought-card today-thought-card-img cinematic-reveal">
+                        <div class="today-thought-img-wrap">
+                            <img src="https://images.pexels.com/photos/18849427/pexels-photo-18849427.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Warm diyas glowing in the evening" loading="lazy">
+                        </div>
+                        <div class="today-thought-body">
+                            <span class="today-card-icon" aria-hidden="true">🪔</span>
+                            <h4>Celebrate with Light</h4>
+                            <p>Diyas and candles are what many of us remember most about Diwali. Lighting them with a little care — and letting them burn safely — can make the night just as beautiful, without leaving a pile of waste behind.</p>
+                        </div>
+                    </article>
+
+                    <article class="today-thought-card today-thought-card-img cinematic-reveal">
+                        <div class="today-thought-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=700&q=80" alt="Clear night sky and soft outdoor light" loading="lazy">
+                        </div>
+                        <div class="today-thought-body">
+                            <span class="today-card-icon" aria-hidden="true">🌿</span>
+                            <h4>Let the Celebration Breathe</h4>
+                            <p>Fireworks are part of the fun for many families. Even so, a gentler approach — fewer crackers, quieter moments — can make the evening easier for children, elders, anyone who is unwell, and neighbours who prefer a softer night.</p>
+                        </div>
+                    </article>
+
+                    <article class="today-thought-card today-thought-card-img cinematic-reveal">
+                        <div class="today-thought-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=700&q=80" alt="Calm dog resting at home" loading="lazy">
+                        </div>
+                        <div class="today-thought-body">
+                            <span class="today-card-icon" aria-hidden="true">🐾</span>
+                            <h4>Remember Our Four-Legged Friends</h4>
+                            <p>Loud sounds can scare pets and street animals. Offering them a quiet room, soft music, or a familiar corner during the celebrations is a small kindness that often means more than we realise.</p>
+                        </div>
+                    </article>
+
+                    <article class="today-thought-card today-thought-card-img cinematic-reveal">
+                        <div class="today-thought-img-wrap">
+                            <img src="https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Clean street after celebration" loading="lazy">
+                        </div>
+                        <div class="today-thought-body">
+                            <span class="today-card-icon" aria-hidden="true">♻️</span>
+                            <h4>Leave Less Behind</h4>
+                            <p>Choosing decorations we can reuse, skipping extra plastic, and taking a few minutes to tidy up the next morning helps the festival feel complete — not only beautiful the night of, but clean the day after.</p>
+                        </div>
+                    </article>
+
+                    <article class="today-thought-card today-thought-card-img cinematic-reveal">
+                        <div class="today-thought-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=700&q=80" alt="Family sharing food and sweets" loading="lazy">
+                        </div>
+                        <div class="today-thought-body">
+                            <span class="today-card-icon" aria-hidden="true">🍱</span>
+                            <h4>Share the Happiness</h4>
+                            <p>Sweets and meals are meant to be shared. Passing a box to a neighbour, inviting someone who might be alone, or simply cooking a little less than “too much” keeps the joy circulating beyond our own table.</p>
+                        </div>
+                    </article>
+
+                    <article class="today-thought-card today-thought-card-img cinematic-reveal">
+                        <div class="today-thought-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=700&q=80" alt="Friends and neighbours together" loading="lazy">
+                        </div>
+                        <div class="today-thought-body">
+                            <span class="today-card-icon" aria-hidden="true">❤️</span>
+                            <h4>Make Room for Everyone</h4>
+                            <p>Not every home celebrates the same way. A little consideration for neighbours, and an open door for people who might feel left out, can make the whole street feel warmer.</p>
+                        </div>
+                    </article>
+
+                    <article class="today-thought-card today-thought-card-img cinematic-reveal">
+                        <div class="today-thought-img-wrap">
+                            <img src="https://images.pexels.com/photos/6103203/pexels-photo-6103203.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Diyas placed safely at home" loading="lazy">
+                        </div>
+                        <div class="today-thought-body">
+                            <span class="today-card-icon" aria-hidden="true">👨‍👩‍👧</span>
+                            <h4>Celebrate Safely</h4>
+                            <p>Keeping flames and fireworks away from curtains and dry leaves, and staying close when children are around them, is simply looking after each other so everyone can enjoy the night without worry.</p>
+                        </div>
+                    </article>
+
+                    <article class="today-thought-card today-thought-card-img cinematic-reveal">
+                        <div class="today-thought-img-wrap">
+                            <img src="https://images.pexels.com/photos/6213685/pexels-photo-6213685.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Handmade rangoli and local crafts" loading="lazy">
+                        </div>
+                        <div class="today-thought-body">
+                            <span class="today-card-icon" aria-hidden="true">🛍️</span>
+                            <h4>Support Local Hands</h4>
+                            <p>Diyas, rangoli colours and decorations from local makers carry a different kind of warmth. Choosing them supports the people who keep these crafts alive, and often makes our own celebration feel more personal.</p>
+                        </div>
+                    </article>
+
+                    <article class="today-thought-card today-thought-card-img cinematic-reveal">
+                        <div class="today-thought-img-wrap">
+                            <img src="https://images.pexels.com/photos/34387791/pexels-photo-34387791.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Simple home with diyas and flowers" loading="lazy">
+                        </div>
+                        <div class="today-thought-body">
+                            <span class="today-card-icon" aria-hidden="true">💰</span>
+                            <h4>Keep It Meaningful</h4>
+                            <p>Diwali does not need to cost more every year. A quiet evening with diyas, good food and people we love is often what we remember longest — long after the shopping bags are gone.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            
+
+
+
         </section>
 
-        <!-- FINAL -->
-        <section class="finale-section">
-            <div class="finale-inner cinematic-reveal">
-                <span class="finale-diya" aria-hidden="true">🪔</span>
-                <h2>
-                    The story of Diwali<br>
-                    is still being written.
-                </h2>
-                <p>
-                    From ancient stories and timeless traditions
-                    to the way we celebrate today, every generation
-                    adds something of its own.
-                </p>
-                <p>
-                    And perhaps the most beautiful part is simple:
-                    the light keeps moving forward.
-                </p>
-                <div class="finale-symbols" aria-hidden="true">✨ 🪔 🌸 🪔 ✨</div>
+
+        <!-- Closing row: Today message + Finale side by side -->
+        <section class="closing-row-section" aria-label="Closing messages">
+            <div class="closing-row">
+                <div class="closing-row-item">
+<div class="today-closing cinematic-reveal">
+                <div class="today-closing-inner">
+                    <span class="today-closing-diya" aria-hidden="true">🪔</span>
+                    <h3>Small Choices, Brighter Diwali</h3>
+                    <p class="today-closing-lead">
+                        Celebrate the joy. Protect the air. Keep the light alive.
+                    </p>
+                    <p>
+                        Celebrating Diwali with a little more care does not mean celebrating less.
+                        It simply means noticing the people, animals and shared spaces around us —
+                        and letting that awareness guide how we light up the night.
+                    </p>
+                    <p class="today-closing-emphasis">
+                        Because the brightest Diwali is not only the one that lights up our homes —
+                        it is the one that brings a little more light into someone else’s life.
+                    </p>
+                    <div class="today-closing-symbols" aria-hidden="true">✨ 🪔 🌸 🪔 ✨</div>
+                </div>
+            </div>
+                </div>
+                <div class="closing-row-item">
+                    <div class="finale-inner cinematic-reveal">
+                        <span class="finale-diya" aria-hidden="true">🪔</span>
+                        <h2>The story of Diwali<br>is still being written.</h2>
+                        <p>From ancient stories and timeless traditions to the way we celebrate today, every generation adds something of its own.</p>
+                        <p>And perhaps the most beautiful part is simple: the light keeps moving forward.</p>
+                        <div class="finale-symbols" aria-hidden="true">✨ 🪔 🌸 🪔 ✨</div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- PERSONAL DIWALI GREETING -->
-        <section
-            id="personal-greeting"
-            class="personal-diwali-section cinematic-reveal"
-            aria-label="Diwali wishes from Yogeswari"
-        >
+
+        <section id="personal-greeting" class="personal-diwali-section cinematic-reveal" aria-label="Diwali wishes from Yogeswari">
             <div class="personal-diwali-frame">
                 <img
                     src="Assets/images/Devotional Diwali Aarti with Rama and Sita.png"
@@ -560,14 +548,10 @@
         </section>
 
     </main>
-<!-- 
-    <footer class="site-footer">
-        <div class="footer-diya" aria-hidden="true">🪔</div>
-        <h3>Diwali — A Journey Through Light</h3>
-        <p>Stories · Traditions · Celebrations · Today</p>
-        <p class="footer-small">Created as a visual cultural exploration of Diwali.</p>
-        <p class="footer-small">Photos via Pexels &amp; Unsplash (free to use).</p>
-    </footer> -->
+
+    <div class="creator-credit">
+        <p>Made with light and love · <span>Created by Yogeswari</span> 🪔</p>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
