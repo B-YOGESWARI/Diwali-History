@@ -715,5 +715,151 @@
         });
     })();
 
+    
+    /* =========================================================
+       FRONTEND ↔ BACKEND CONNECTION
+       Uses FastAPI on same origin (port 8000) or localhost:8000
+    ========================================================= */
+
+    function getApiBase() {
+        var origin = window.location.origin || '';
+        // When site is served by FastAPI (port 8000), same origin
+        if (origin.indexOf(':8000') !== -1) return origin;
+        // Live Server / static preview → talk to backend
+        if (origin.indexOf(':5500') !== -1 || origin.indexOf('127.0.0.1') !== -1 || origin.indexOf('localhost') !== -1) {
+            return 'http://127.0.0.1:8000';
+        }
+        return origin || 'http://127.0.0.1:8000';
+    }
+
+    var API_BASE = getApiBase();
+
+    function apiGet(path) {
+        return fetch(API_BASE + path, {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' }
+        }).then(function (res) {
+            if (!res.ok) throw new Error('API ' + path + ' → ' + res.status);
+            return res.json();
+        });
+    }
+
+    function setBackendStatus(ok, detail) {
+        var el = document.getElementById('backendStatus');
+        if (!el) return;
+        el.textContent = ok ? 'Connected' : 'Offline';
+        el.className = 'backend-status ' + (ok ? 'is-online' : 'is-offline');
+        if (detail) el.title = detail;
+    }
+
+    function escapeHtml(str) {
+        return String(str == null ? '' : str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    /** Map API chapter/scenes into Journey panel if present */
+    function renderJourneyFromApi(chapters) {
+        if (!chapters || !chapters.length) return false;
+
+        var strip = document.querySelector('#journeyPanel .scene-strip');
+        if (!strip) return false;
+
+        // Prefer a chapter that looks like the Rama / origin story
+        var chapter = null;
+        for (var i = 0; i < chapters.length; i++) {
+            var c = chapters[i];
+            var id = String(c.id || c.chapter_id || '').toLowerCase();
+            var title = String(c.title || c.name || '').toLowerCase();
+            if (id.indexOf('rama') !== -1 || id.indexOf('journey') !== -1 ||
+                title.indexOf('rama') !== -1 || title.indexOf('return') !== -1 ||
+                title.indexOf('ayodhya') !== -1) {
+                chapter = c;
+                break;
+            }
+        }
+        if (!chapter) chapter = chapters[0];
+
+        var scenes = chapter.scenes || chapter.scene_list || [];
+        if (!scenes.length && chapter.sections) scenes = chapter.sections;
+        if (!scenes.length) return false;
+
+        var html = '';
+        scenes.forEach(function (scene, index) {
+            var num = String(index + 1).padStart(2, '0');
+            var sTitle = scene.title || scene.name || ('Scene ' + num);
+            var sText = scene.description || scene.summary || scene.text || scene.narration || '';
+            var sImg = scene.image || scene.image_url || scene.thumbnail || '';
+            // Keep a sensible fallback image from existing design
+            if (!sImg) {
+                var fallbacks = [
+                    'https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?auto=format&fit=crop&w=600&q=80',
+                    'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80',
+                    'https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&w=600&q=80',
+                    'https://images.pexels.com/photos/280221/pexels-photo-280221.jpeg?auto=compress&cs=tinysrgb&w=600',
+                    'https://images.pexels.com/photos/18849427/pexels-photo-18849427.jpeg?auto=compress&cs=tinysrgb&w=600'
+                ];
+                sImg = fallbacks[index % fallbacks.length];
+            }
+
+            html += '<article class="scene-card" role="listitem">' +
+                '<img src="' + escapeHtml(sImg) + '" alt="' + escapeHtml(sTitle) + '" loading="lazy">' +
+                '<div class="scene-card-body">' +
+                '<span class="scene-number">' + escapeHtml(num) + '</span>' +
+                '<h3>' + escapeHtml(sTitle) + '</h3>' +
+                '<p>' + escapeHtml(sText) + '</p>' +
+                '</div></article>';
+        });
+
+        strip.innerHTML = html;
+
+        // Optional: update journey summary from chapter
+        var summaryTitle = document.querySelector('#journey .chapter-summary h2');
+        var summaryText = document.querySelector('#journey .chapter-summary p');
+        if (summaryTitle && (chapter.title || chapter.name)) {
+            summaryTitle.textContent = chapter.title || chapter.name;
+        }
+        if (summaryText && (chapter.summary || chapter.description || chapter.intro)) {
+            summaryText.textContent = chapter.summary || chapter.description || chapter.intro;
+        }
+
+        console.log('🪔 Journey updated from API:', chapter.id || chapter.chapter_id || chapter.title);
+        return true;
+    }
+
+    function connectBackend() {
+        apiGet('/api/health')
+            .then(function (health) {
+                setBackendStatus(true, JSON.stringify(health));
+                console.log('🪔 Backend health:', health);
+                return apiGet('/api/history');
+            })
+            .then(function (data) {
+                var chapters = data.chapters || data.data || data.results || [];
+                if (!Array.isArray(chapters) && data.chapter) chapters = [data.chapter];
+                var ok = renderJourneyFromApi(chapters);
+                if (!ok) {
+                    console.log('🪔 API history loaded but no scenes mapped — keeping static Journey content.');
+                }
+                // Expose for debugging
+                window.DiwaliAPI = {
+                    base: API_BASE,
+                    history: data,
+                    reload: connectBackend
+                };
+            })
+            .catch(function (err) {
+                setBackendStatus(false, String(err && err.message ? err.message : err));
+                console.warn('🪔 Backend offline or unreachable at', API_BASE, err);
+                // Site keeps working with static HTML content
+            });
+    }
+
+    // Connect after DOM is ready (script is at end of body)
+    connectBackend();
+
+
     console.log('🪔 Diwali cinematic experience loaded.');
 })();

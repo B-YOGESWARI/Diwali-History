@@ -2597,3 +2597,27 @@ button:focus-visible {
         gap: 1rem;
     }
 }
+
+
+/* Backend connection indicator */
+.backend-status {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    border: 1px solid rgba(217, 164, 65, 0.35);
+    color: #C9BDA9;
+    margin-right: 0.5rem;
+    white-space: nowrap;
+}
+.backend-status.is-online {
+    color: #80ffdb;
+    border-color: rgba(48, 209, 88, 0.45);
+    box-shadow: 0 0 10px rgba(48, 209, 88, 0.2);
+}
+.backend-status.is-offline {
+    color: #C9BDA9;
+    opacity: 0.7;
+}
