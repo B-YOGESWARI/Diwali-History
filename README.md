@@ -140,6 +140,22 @@ The free usage available through AI video-generation services is limited. Once t
 
 The website and backend are deployed, but the complete video-generation workflow is not yet reliable end to end. Improving this is one of the areas for future development.
 
+## 🌱 My Thought: Celebrate with a Thought
+
+Diwali is a festival of light, happiness, and togetherness. But as we celebrate, we should also remember the environment we live in and the responsibility we have to protect it.
+
+Through this project, I wanted to share the history and beauty of Diwali in a meaningful way while encouraging people to celebrate with awareness and care for nature.
+
+Firecrackers may bring a few moments of excitement, but they can also contribute to air and noise pollution and affect people, animals, and our surroundings. We can make our celebrations more thoughtful by choosing eco-friendly decorations, lighting traditional diyas safely, spending time with loved ones, and reducing unnecessary pollution.
+
+That is the thought behind **“Celebrate with a Thought”** — enjoy the festival, understand its significance, and remember that protecting our environment is also a way of celebrating life.
+
+I created Diwali History not only to explore how AI and technology can bring historical stories to life, but also to share a positive message: we can preserve our traditions while caring for the world around us.
+
+**Celebrate the festival. Cherish the traditions. Protect our planet.** 🌍🪔
+
+*This Diwali, let's celebrate with light in our homes, happiness in our hearts, and responsibility towards our environment.*
+
 ## 🔮 What I'd Like to Improve Next
 
 There is still room to improve this project. Some of the next steps I'd like to explore are:
