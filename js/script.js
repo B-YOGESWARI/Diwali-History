@@ -1,5 +1,5 @@
-/* =========================================================
-   DIWALI — A Journey Through Light
+﻿/* =========================================================
+   DIWALI â€” A Journey Through Light
    Interactive cinematic script
 ========================================================= */
 
@@ -150,7 +150,7 @@
     /* ---------- Floating celebration ---------- */
 
     function createFloatingCelebration() {
-        const emojis = ['✨', '🪔', '🌸', '🌼', '🎆', '🎇', '💫', '🪷', '⭐', '🌺'];
+        const emojis = ['âœ¨', 'ðŸª”', 'ðŸŒ¸', 'ðŸŒ¼', 'ðŸŽ†', 'ðŸŽ‡', 'ðŸ’«', 'ðŸª·', 'â­', 'ðŸŒº'];
         const container = document.createElement('div');
 
         container.className = 'temporary-diwali-celebration';
@@ -583,12 +583,12 @@
         );
     })();
 
-    console.log('🪔 Diwali cinematic experience loaded.');
+    console.log('ðŸª” Diwali cinematic experience loaded.');
 })();
 
 
 /* =========================================================
-   ASK ABOUT DIWALI — integrated web-powered assistant
+   ASK ABOUT DIWALI â€” integrated web-powered assistant
    Uses the existing dark-themed section in index.html.
 ========================================================= */
 
@@ -596,7 +596,7 @@
     'use strict';
 
     // Local FastAPI endpoint.
-    const ASK_API_URL = 'http://127.0.0.1:8001/ask';
+    const ASK_API_URL = 'https://YOUR-RENDER-URL.onrender.com/ask';
 
     function initAskDiwali() {
         const section = document.getElementById('ask-diwali');
@@ -721,10 +721,10 @@
 
             if (button) {
                 button.disabled = true;
-                button.textContent = 'Searching the web…';
+                button.textContent = 'Searching the webâ€¦';
             }
 
-            if (status) status.textContent = 'Searching the web for an answer…';
+            if (status) status.textContent = 'Searching the web for an answerâ€¦';
 
             if (answer) answer.hidden = false;
             if (answerTitle) answerTitle.textContent = 'Finding your answer';
@@ -804,7 +804,7 @@
                 if (button) {
                     button.disabled = false;
                     button.innerHTML =
-                        'Ask Question <span aria-hidden="true">→</span>';
+                        'Ask Question <span aria-hidden="true">â†’</span>';
                 }
             }
         }
@@ -832,7 +832,7 @@
         // Start with the Ask section hidden; open it through the site navigation.
         closeAsk();
 
-        console.log('🪔 Ask About Diwali initialized:', ASK_API_URL);
+        console.log('ðŸª” Ask About Diwali initialized:', ASK_API_URL);
     }
 
     if (document.readyState === 'loading') {
