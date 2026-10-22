@@ -1,0 +1,110 @@
+```html
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ask questions about history, traditions, culture and current events.">
+
+    <title>Ask Anything | Diwali History</title>
+
+    <link rel="stylesheet" href="../css/ask-diwali.css">
+</head>
+
+<body>
+    <main class="page">
+
+        <header class="topbar">
+            <a class="brand" href="../index.html">🪔 Diwali History</a>
+            <a class="back-link" href="../index.html">← Back to website</a>
+        </header>
+
+        <section class="hero">
+            <p class="eyebrow">WEB-POWERED AI ASSISTANT</p>
+            <h1>Ask Anything.</h1>
+            <p class="intro">
+                Curious about traditions, history, mythology, culture,
+                current events, or another topic? Ask a question and
+                explore the answer with web sources.
+            </p>
+        </section>
+
+        <section class="chat-card" aria-label="Ask Anything chat">
+
+            <div class="chat-header">
+                <div class="avatar">🪔</div>
+
+                <div>
+                    <h2>Ask About Anything</h2>
+                    <p>Answers are researched from the web when available.</p>
+                </div>
+
+                <span class="status"><i></i> Ready</span>
+            </div>
+
+            <div id="messages" class="messages" aria-live="polite">
+                <article class="message assistant">
+                    <div class="message-label">Ask Diwali AI</div>
+                    <p>
+                        Namaste! 🙏 Ask about Diwali, Indian traditions,
+                        history, mythology, culture, current events, or
+                        any topic you are curious about. I’ll do my best
+                        to answer clearly and show sources when available.
+                    </p>
+                </article>
+            </div>
+
+            <div class="suggestions">
+                <button type="button" class="suggestion">
+                    Why is Diwali celebrated?
+                </button>
+
+                <button type="button" class="suggestion">
+                    How do Diwali traditions differ across India?
+                </button>
+
+                <button type="button" class="suggestion">
+                    What are today's important news stories in India?
+                </button>
+            </div>
+
+            <form id="ask-form" class="composer">
+                <label class="sr-only" for="question">Your question</label>
+
+                <textarea
+                    id="question"
+                    name="question"
+                    rows="2"
+                    maxlength="600"
+                    placeholder="Type any question here..."
+                    required
+                ></textarea>
+
+                <div class="composer-bottom">
+                    <p>Check sources for important or time-sensitive information.</p>
+
+                    <button id="send-button" type="submit">
+                        <span>Ask</span>
+                        <span aria-hidden="true">➤</span>
+                    </button>
+                </div>
+            </form>
+
+            <p id="error" class="error" role="alert" hidden></p>
+
+        </section>
+
+        <footer>
+            <p>Made to encourage curiosity, learning, and thoughtful celebration.</p>
+            <p>
+                AI answers can be incomplete or mistaken.
+                Open cited sources to verify important information.
+            </p>
+        </footer>
+
+    </main>
+
+    <script src="../js/ask-diwali.js"></script>
+</body>
+</html>
+```
