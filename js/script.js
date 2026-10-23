@@ -587,16 +587,18 @@
 })();
 
 
+
 /* =========================================================
-   ASK ABOUT DIWALI â€” integrated web-powered assistant
+   ASK ABOUT DIWALI — integrated web-powered assistant
    Uses the existing dark-themed section in index.html.
 ========================================================= */
 
 (function () {
     'use strict';
 
-    // Local FastAPI endpoint.
-    const ASK_API_URL = 'https://YOUR-RENDER-URL.onrender.com/ask';
+    // Production Render FastAPI endpoint.
+    const ASK_API_URL =
+        'https://diwali-history-backend.onrender.com/ask';
 
     function initAskDiwali() {
         const section = document.getElementById('ask-diwali');
@@ -715,16 +717,21 @@
             }
 
             if (cleanedQuestion.length > 600) {
-                if (status) status.textContent = 'Please keep your question under 600 characters.';
+                if (status) {
+                    status.textContent =
+                        'Please keep your question under 600 characters.';
+                }
                 return;
             }
 
             if (button) {
                 button.disabled = true;
-                button.textContent = 'Searching the webâ€¦';
+                button.textContent = 'Searching the web…';
             }
 
-            if (status) status.textContent = 'Searching the web for an answerâ€¦';
+            if (status) {
+                status.textContent = 'Searching the web for an answer…';
+            }
 
             if (answer) answer.hidden = false;
             if (answerTitle) answerTitle.textContent = 'Finding your answer';
@@ -763,11 +770,20 @@
                     );
                 }
 
-                if (!data || typeof data.answer !== 'string' || !data.answer.trim()) {
-                    throw new Error('The API returned no answer. Please try again.');
+                if (
+                    !data ||
+                    typeof data.answer !== 'string' ||
+                    !data.answer.trim()
+                ) {
+                    throw new Error(
+                        'The API returned no answer. Please try again.'
+                    );
                 }
 
-                if (answerTitle) answerTitle.textContent = cleanedQuestion;
+                if (answerTitle) {
+                    answerTitle.textContent = cleanedQuestion;
+                }
+
                 if (answerText) answerText.textContent = data.answer;
 
                 showSources(data.sources);
@@ -789,13 +805,14 @@
                 if (answerText) {
                     answerText.textContent =
                         error instanceof TypeError
-                            ? 'Cannot connect to the Ask Diwali API. Make sure the backend is running at http://127.0.0.1:8001 and that CORS allows this website.'
-                            : (error.message || 'Something went wrong. Please try again later.');
+                            ? 'Unable to connect to the Diwali service. Please check your internet connection and try again.'
+                            : (error.message ||
+                               'Something went wrong. Please try again later.');
                 }
 
                 if (status) {
                     status.textContent =
-                        'Connection failed. Check the backend terminal and browser console.';
+                        'The request failed. Please try again shortly.';
                 }
 
                 if (results) results.replaceChildren();
@@ -804,7 +821,7 @@
                 if (button) {
                     button.disabled = false;
                     button.innerHTML =
-                        'Ask Question <span aria-hidden="true">â†’</span>';
+                        'Ask Question <span aria-hidden="true">→</span>';
                 }
             }
         }
@@ -829,14 +846,18 @@
             });
         });
 
-        // Start with the Ask section hidden; open it through the site navigation.
+        // Start with the Ask section hidden; open it through site navigation.
         closeAsk();
 
-        console.log('ðŸª” Ask About Diwali initialized:', ASK_API_URL);
+        console.log('Ask About Diwali initialized:', ASK_API_URL);
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initAskDiwali, { once: true });
+        document.addEventListener(
+            'DOMContentLoaded',
+            initAskDiwali,
+            { once: true }
+        );
     } else {
         initAskDiwali();
     }
