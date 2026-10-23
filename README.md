@@ -1,94 +1,112 @@
 # 🪔 Diwali History
+
 ### Bringing the Stories of Diwali Closer Through Technology
 
-Diwali is a festival filled with stories, traditions, and cultural significance. With this project, I wanted to explore how technology and AI could help bring these stories to life in a more engaging way.
+Diwali has always been a festival filled with beautiful stories, traditions, and meaningful values. I wanted to create something that would help people explore the history and significance of Diwali in a simple, interactive, and engaging way.
 
-**Diwali History** is a web application that explores Diwali's history through digital storytelling and experimental AI-powered video generation. I built this project to learn more about web development, backend integration, and the possibilities of emerging AI technologies.
+That idea led me to build **Diwali History**, a web application that brings together cultural storytelling and technology. One of the main features of the website is **Ask About Diwali**, where visitors can ask questions about the festival and explore answers with relevant web sources.
+
+While building this project, I got the opportunity to work with frontend development, Python, APIs, AI-powered web search, and cloud deployment. It was a hands-on learning experience that helped me understand how different technologies can work together to turn an idea into a real application.
 
 ## 🌐 Live Demo
 
-You can explore the deployed application here:
+You can explore my project here:
 
-- **Frontend:** https://diwali-history.netlify.app/
-- **Backend:** https://diwali-history-backend.onrender.com/
-- **GitHub Repository:** https://github.com/B-YOGESWARI/Diwali-History
+- **Live Website:** [Diwali History](https://diwali-history.netlify.app/)
+- **Backend API:** [Diwali History Backend](https://diwali-history-backend.onrender.com/)
+- **GitHub Repository:** [Diwali-History](https://github.com/B-YOGESWARI/Diwali-History)
 
-## 💡 What Is This Project About?
+## 💡 What Is Diwali History?
 
-The idea behind Diwali History is simple: combine historical storytelling with modern technology to make cultural stories more engaging.
+The main idea behind this project is to make learning about Diwali more interesting through technology.
 
-The application has a frontend where users interact with the website and a Python backend that handles server-side logic and AI service integrations.
+The website allows visitors to explore the festival's stories, traditions, and cultural significance through an interactive experience. I also wanted to make it easier for people to find answers to their questions, so I added the **Ask About Diwali** feature.
 
-I also experimented with AI video-generation services to explore how historical stories and scene descriptions could be transformed into videos.
+Instead of simply reading static information, visitors can type a question and receive an answer through the connected backend and web-search service. Relevant sources are also displayed when available, allowing visitors to explore the information further.
 
-## ✨ What I Worked On
+For me, this project is not just about building a website. It is about finding meaningful ways to use technology to share our culture and traditions.
 
-- Created a web interface using HTML, CSS, and JavaScript.
-- Developed backend functionality using Python and FastAPI.
-- Connected the frontend and backend through API requests.
-- Organized the backend into separate agents and services for story, scene, and video-generation-related logic.
-- Experimented with external AI services such as Luma AI and Hugging Face.
-- Deployed the frontend on Netlify and the backend on Render.
+## ✨ Features I Built
 
-This project is also a learning experience for me, especially in understanding how different parts of a web application work together.
+- 🪔 **Diwali Stories and History:** Explore the history, traditions, and cultural significance of the festival.
+- 🤖 **Ask About Diwali:** Ask questions about Diwali and receive AI-assisted answers using web search.
+- 🔎 **Source Links:** Explore relevant sources returned with answers.
+- 🎨 **Interactive Website Design:** Festive animations, cinematic visuals, and interactive elements make the experience more engaging.
+- 📱 **Responsive Navigation:** Navigate the website through an interface designed to support different screen sizes.
+- 🔗 **Backend Integration:** Connect the frontend to a Python-based API that processes questions and returns responses.
+- ☁️ **Live Deployment:** Access the website online through Netlify, with the backend hosted on Render.
+- 🌱 **Environmental Awareness:** Share the message of celebrating Diwali thoughtfully while caring for our surroundings.
 
-## 🛠️ Technologies Used
+## 🛠️ Technologies I Used
 
-- **HTML, CSS, and JavaScript** — For the website interface and interactions.
-- **Python** — For backend development.
-- **FastAPI** — For building backend APIs.
-- **Uvicorn** — For running the Python application.
-- **Netlify** — For frontend deployment.
-- **Render** — For backend deployment.
-- **Luma AI and Hugging Face** — For experimenting with AI video generation.
-- **Git and GitHub** — For version control and managing the source code.
+| Technology | How I Used It |
+|---|---|
+| HTML5 | To structure the website |
+| CSS3 | To create the design, animations, and visual effects |
+| JavaScript | To handle interactions and connect the frontend to the backend |
+| Python | To develop the backend logic |
+| FastAPI | To build the API used by the website |
+| Uvicorn | To run the FastAPI application |
+| Tavily API | To retrieve relevant web-search information for user questions |
+| Netlify | To deploy the frontend |
+| Render | To host the backend |
+| Git and GitHub | To manage the source code and track changes |
 
-## 🏗️ How the Application Works
+## 🏗️ How It Works
 
-The application has two main parts:
+I built the application with two main parts: the frontend, which visitors interact with, and the backend, which processes their questions.
 
 ```text
-User
-  |
-  v
-Frontend (Netlify)
-HTML + CSS + JavaScript
-  |
-  v
-Backend (Render)
-Python + FastAPI
-  |
-  v
-AI Service Integration
-Luma AI / Hugging Face
-  |
-  v
-Video Output
-When generation succeeds
+             Visitor
+                |
+                v
+       Diwali History Website
+          HTML, CSS, JS
+                |
+                v
+         FastAPI Backend
+             (Render)
+                |
+                v
+          Tavily Web Search
+                |
+                v
+      Answer + Available Sources
+                |
+                v
+       Displayed on the Website
 ```
 
-The frontend communicates with the backend, which handles the relevant application logic. When video generation is requested, the backend can interact with a configured AI service.
+Here is how the **Ask About Diwali** feature works:
 
-The final video-generation step is still experimental and may not succeed for every request.
+1. A visitor opens the website and navigates to Ask About Diwali.
+2. They enter a question about the festival.
+3. JavaScript sends the question to the FastAPI backend.
+4. The backend uses Tavily to search for relevant web information.
+5. The backend sends the response and available source details back to the website.
+6. The visitor can read the answer and explore the sources.
 
-## 🚀 Run the Project Locally
+Working on this integration helped me understand how frontend applications communicate with backend APIs and external services.
 
-If you want to explore the source code or run the project on your computer, follow these steps.
+## 🚀 Running the Project Locally
+
+If you would like to explore the code or run the project on your computer, follow these steps.
 
 ### Prerequisites
 
 - Python
 - Git
 - pip
+- A Tavily API key for the web-search feature
 
-### Step 1: Clone the repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/B-YOGESWARI/Diwali-History.git
 cd Diwali-History
 ```
 
-### Step 2: Create a virtual environment
+### 2. Create a virtual environment
 
 ```bash
 python -m venv venv
@@ -96,85 +114,108 @@ python -m venv venv
 
 On Windows, activate it using:
 
-```powershell
+```bash
 venv\Scripts\activate
 ```
 
-### Step 3: Install dependencies
+On macOS or Linux, use:
 
-If the repository contains a `requirements.txt` file in the root directory, run:
+```bash
+source venv/bin/activate
+```
+
+### 3. Install the dependencies
+
+If `requirements.txt` is available in the project root, run:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 4: Configure environment variables
+If the file is inside the `backend` folder, use its actual path instead.
 
-Some backend features may require API credentials. Configure the required environment variables using the names expected by the application.
+### 4. Configure the API key
 
-Keep your API keys private and never upload them to GitHub.
+The Ask About Diwali feature uses a Tavily API key for web search. Configure the following environment variable in your local environment:
 
-### Step 5: Start the backend
-
-If the application entry point is `backend/main.py` and the FastAPI instance is named `app`, run:
-
-```bash
-uvicorn backend.main:app --reload
+```text
+TAVILY_API_KEY=your_tavily_api_key
 ```
 
-The API documentation may then be available at:
+Replace the placeholder with your actual key. Keep your API key private, and never upload it to GitHub.
 
-http://127.0.0.1:8000/docs
+### 5. Start the backend
 
-The exact commands may need adjustment depending on the current project configuration.
+If your FastAPI application is defined as `app` in `backend/main.py`, run this command from the project root:
 
-## 🎬 A Note About AI Video Generation
+```bash
+uvicorn backend.main:app --reload --port 8001
+```
 
-One of the interesting parts of this project was experimenting with AI video generation.
+The backend should then be available at:
 
-I explored services such as Luma AI and Hugging Face to understand how text prompts and historical scene descriptions could be converted into videos.
+[http://127.0.0.1:8001](http://127.0.0.1:8001)
 
-However, **video generation is still an experimental feature**. I encountered limitations with free credits and some technical issues while integrating the services.
+If API documentation is enabled, you can explore it at:
 
-The free usage available through AI video-generation services is limited. Once the available credits or request quota is exhausted, additional generations may not be possible without waiting for a reset or obtaining more credits. API errors and service availability can also affect the results.
+[http://127.0.0.1:8001/docs](http://127.0.0.1:8001/docs)
 
-The website and backend are deployed, but the complete video-generation workflow is not yet reliable end to end. Improving this is one of the areas for future development.
+### 6. Run the frontend
 
-## 🌱 My Thought: Celebrate with a Thought
+Open the project using VS Code and serve the website with Live Server or another local web server.
 
-Diwali is a festival of light, happiness, and togetherness. But as we celebrate, we should also remember the environment we live in and the responsibility we have to protect it.
+For example, if Live Server uses port `5500`, open:
 
-Through this project, I wanted to share the history and beauty of Diwali in a meaningful way while encouraging people to celebrate with awareness and care for nature.
+[http://localhost:5500](http://localhost:5500)
 
-Firecrackers may bring a few moments of excitement, but they can also contribute to air and noise pollution and affect people, animals, and our surroundings. We can make our celebrations more thoughtful by choosing eco-friendly decorations, lighting traditional diyas safely, spending time with loved ones, and reducing unnecessary pollution.
+Make sure the frontend API URL points to your local backend during local testing. For the deployed website, use the production Render backend URL.
 
-That is the thought behind **“Celebrate with a Thought”** — enjoy the festival, understand its significance, and remember that protecting our environment is also a way of celebrating life.
+*Note: The commands above assume the project uses the paths and configuration shown. Adjust them if your current project structure differs.*
 
-I created Diwali History not only to explore how AI and technology can bring historical stories to life, but also to share a positive message: we can preserve our traditions while caring for the world around us.
+## 🌱 Celebrate with a Thought
+
+For me, Diwali is about more than lights and celebrations. It is also about happiness, hope, togetherness, and the values we carry into our everyday lives.
+
+While working on this project, I wanted to share a small message about celebrating responsibly and caring for the environment.
+
+Firecrackers can contribute to air and noise pollution and affect people, animals, and our surroundings. We can make our celebrations more thoughtful by choosing eco-friendly decorations, lighting diyas safely, spending time with family and friends, and reducing unnecessary pollution.
+
+This is the idea behind **“Celebrate with a Thought.”** We can enjoy our traditions while also being mindful of the world around us.
 
 **Celebrate the festival. Cherish the traditions. Protect our planet.** 🌍🪔
 
-*This Diwali, let's celebrate with light in our homes, happiness in our hearts, and responsibility towards our environment.*
+I hope Diwali History encourages visitors to explore the festival's stories, appreciate its cultural significance, and celebrate with a little more awareness and care.
 
-## 🔮 What I'd Like to Improve Next
+## 🔮 What's Next?
 
-There is still room to improve this project. Some of the next steps I'd like to explore are:
+This project is still a learning journey, and there are several things I would like to improve over time:
 
-- Making the video-generation process more reliable.
-- Improving API error handling and generation-status tracking.
-- Improving how generated videos are retrieved and managed.
-- Adding more historical stories and scenes.
-- Improving communication between the frontend and backend.
-- Exploring AI services that fit within the available budget.
+- Add more Diwali stories and historical information.
+- Improve the quality and relevance of answers from Ask About Diwali.
+- Explore more reliable sources of cultural and historical information.
+- Improve error handling and the overall user experience.
+- Make the website more accessible and improve the mobile experience.
+- Continue exploring useful AI-powered features as the project grows.
 
-## 👩‍💻 About the Developer
+## 👩‍💻 About Me
 
 **Yogeswari Boreddi**
 
 GitHub: [@B-YOGESWARI](https://github.com/B-YOGESWARI)
 
-This project reflects my interest in software development and emerging AI technologies. It has been an opportunity to experiment, learn from integration challenges, and understand how different technologies can work together in a real-world application.
+I enjoy learning new technologies and building applications that solve practical problems. Through this project, I explored how HTML, CSS, JavaScript, Python, APIs, and cloud platforms can work together in a real-world application.
+
+There were challenges along the way, especially while connecting the frontend, backend, and external services. Working through them helped me learn more about debugging, deployment, and building applications beyond the local development environment.
+
+I look forward to continuing to improve this project and exploring more ways to combine technology with meaningful ideas.
 
 ## 📌 Project Status
 
-Diwali History is a deployed project that is still evolving. The frontend is hosted on Netlify, and the backend is hosted on Render. AI video generation remains experimental and requires further development.
+**Diwali History is live and available online.**
+
+- The frontend is deployed on Netlify.
+- The backend is deployed on Render.
+- Ask About Diwali is integrated with the backend and web-search service.
+- The project will continue to evolve as I add improvements and explore new ideas.
+
+Thank you for taking the time to explore my project! 🪔
